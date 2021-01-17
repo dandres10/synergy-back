@@ -1,8 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "/Yh58IFmKcWfU9Rk/AXFVvVj9DRQjkWdrXe8JHvb/itEmEBebODRDe8FI++fYB4BpdPWPpNjwbKHjq9tQKF5ug==",
+  "dgSpecHash": "GPDb8KF5Mv0rINu8mF8keWWTBjSejurhI2mnQh6d7XvZGlu509xwp7b9mLTj+0cRROyccN8w+FGv/klmUJPIkw==",
   "success": true,
   "projectFilePath": "D:\\synergy\\synergy-back\\synergyAPI\\Base.Transversal\\Base.Transversal.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Andres\\.nuget\\packages\\automapper\\10.1.0\\automapper.10.1.0.nupkg.sha512",
+    "C:\\Users\\Andres\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.0\\automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",
+    "C:\\Users\\Andres\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\Andres\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.0.0\\microsoft.extensions.dependencyinjection.abstractions.3.0.0.nupkg.sha512",
+    "C:\\Users\\Andres\\.nuget\\packages\\microsoft.extensions.options\\3.0.0\\microsoft.extensions.options.3.0.0.nupkg.sha512",
+    "C:\\Users\\Andres\\.nuget\\packages\\microsoft.extensions.primitives\\3.0.0\\microsoft.extensions.primitives.3.0.0.nupkg.sha512",
+    "C:\\Users\\Andres\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512"
+  ],
   "logs": []
 }
