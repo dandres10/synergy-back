@@ -26,12 +26,18 @@ namespace API
             services.AddMyServices();
             services.AddDbContext<Context>(options
                 => options.UseSqlServer(Configuration.GetConnectionString("AppConnection")));
-            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseSwagger();
+
+            app.UseSwaggerUI(config =>
+            {
+                config.SwaggerEndpoint("/swagger/v1/swagger.json", "API Synergy V1");
+            });
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

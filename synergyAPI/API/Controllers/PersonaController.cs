@@ -21,10 +21,10 @@
             this.mapper = mapper;
         }
 
-        public Task<Respuesta<IPersonaDTO>> ConsultarListaPersona(IPersonaDTO persona)
-        {
-            throw new System.NotImplementedException();
-        }
+        //public Task<Respuesta<IPersonaDTO>> ConsultarListaPersona(IPersonaDTO persona)
+        //{
+        //    throw new System.NotImplementedException();
+        //}
 
         /// <summary>
         ///     Consultar una persona.
@@ -32,26 +32,25 @@
         /// <author>Marlon León</author>
         /// <param name="persona">DTO persona</param>
         [HttpPost]
-        [Route("ConsultarPersona")]
+        [Route(nameof(PersonaController.ConsultarPersona))]
         public async Task<Respuesta<PersonaCO>> ConsultarPersona(PersonaCO persona)
         {
-            var data = mapper.Map<Respuesta<IPersonaDTO>, Respuesta<PersonaCO>>(await personaBL.ConsultarPersona(mapper.Map<PersonaCO, IPersonaDTO>(persona)));
-            return data;
+            return mapper.Map<Respuesta<IPersonaDTO>, Respuesta<PersonaCO>>(await personaBL.ConsultarPersona(mapper.Map<PersonaCO, IPersonaDTO>(persona)));
         }
 
-        public Task<Respuesta<IPersonaDTO>> EditarPersona(IPersonaDTO persona)
-        {
-            throw new System.NotImplementedException();
-        }
+        //public Task<Respuesta<IPersonaDTO>> EditarPersona(IPersonaDTO persona)
+        //{
+        //    throw new System.NotImplementedException();
+        //}
 
-        public Task<Respuesta<IPersonaDTO>> EliminarPersona(IPersonaDTO persona)
-        {
-            throw new System.NotImplementedException();
-        }
+        //public Task<Respuesta<IPersonaDTO>> EliminarPersona(IPersonaDTO persona)
+        //{
+        //    throw new System.NotImplementedException();
+        //}
 
-        public Task<Respuesta<IPersonaDTO>> GuardarPersona(IPersonaDTO persona)
-        {
-            throw new System.NotImplementedException();
-        }
+        //public Task<Respuesta<IPersonaDTO>> GuardarPersona(IPersonaDTO persona)
+        //{
+        //    throw new System.NotImplementedException();
+        //}
     }
 }
