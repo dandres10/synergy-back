@@ -1,11 +1,9 @@
 ﻿namespace Base.Negocio.BL
 {
     using AutoMapper;
-    using Base.Datos.Contexto.Entidades;
     using Base.Datos.DAL;
     using Base.IC.Acciones.Entidades;
     using Base.IC.DTO.Entidades;
-    using Base.Negocio.BO.Entidades;
     using Base.Transversal.Clases;
     using System.Threading.Tasks;
 
@@ -27,7 +25,6 @@
 
         public async Task<Respuesta<IPersonaDTO>> ConsultarPersona(IPersonaDTO persona)
         {
-            
             return await personaDAL.ConsultarPersona(persona);
         }
 

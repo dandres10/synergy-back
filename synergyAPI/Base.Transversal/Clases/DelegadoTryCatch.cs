@@ -3,11 +3,11 @@
     using System;
     using System.Threading.Tasks;
 
-    public class DelegadoTryCatch<T> : Validaciones<T>
+    public class DelegadoTryCatch : Validaciones
     {
-        public delegate Task<Respuesta<T>> Delegado();
+        public delegate Task<dynamic> DelegadoET();
 
-        public static async Task<Respuesta<T>> EjecutarTransaccionAsync(Delegado delegado)
+        public static async Task<dynamic> EjecutarTransaccionAsync(DelegadoET delegado)
         {
             try
             {
@@ -15,7 +15,7 @@
             }
             catch (Exception error)
             {
-                return CrearRespuesta<T>.Fallida(error.ToString());
+                return CrearRespuesta<dynamic>.Fallida(error.ToString());
             }
         }
     }

@@ -126,6 +126,9 @@
   <data name="NoData" xml:space="preserve">
     <value>No se encontraron datos.</value>
   </data>
+  <data name="Required" xml:space="preserve">
+    <value>El campo {0} es requerido.</value>
+  </data>
   <data name="UpdateData" xml:space="preserve">
     <value>Se actualizo correctamente.</value>
   </data>

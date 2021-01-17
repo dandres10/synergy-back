@@ -88,6 +88,15 @@ namespace Base.Transversal.Mensajes {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a El campo {0} es requerido..
+        /// </summary>
+        public static string Required {
+            get {
+                return ResourceManager.GetString("Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Se actualizo correctamente..
         /// </summary>
         public static string UpdateData {

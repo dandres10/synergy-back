@@ -1,10 +1,22 @@
 ﻿namespace Base.Transversal.Clases
 {
-    public class Validaciones<T>
+    using Microsoft.AspNetCore.Mvc;
+    using System;
+    using System.ComponentModel.DataAnnotations;
+
+    public class Validaciones : ControllerBase
     {
-        public static bool ObjIsNull(T Obj)
+        public static bool ObjIsNull(dynamic Obj) => Obj == null ? true : false;
+    }
+
+    public class GuidRequeridoAttribute : ValidationAttribute
+    {
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            return Obj == null ? true : false;
+            if (value == null || value.Equals(Guid.Empty))
+                return new ValidationResult("El campo Id es requerido.");
+
+            return ValidationResult.Success;
         }
     }
 }

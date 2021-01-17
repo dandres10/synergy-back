@@ -10,7 +10,7 @@
     using System;
     using System.Threading.Tasks;
 
-    public class PersonaDAL : AccesoComun<IPersonaDTO>, IPersonaAccion
+    public class PersonaDAL : AccesoComun, IPersonaAccion
     {
         private readonly Context context;
         private readonly IMapper mapper;

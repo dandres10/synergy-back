@@ -6,11 +6,12 @@
     using Base.Negocio.BL;
     using Base.Transversal.Clases;
     using Microsoft.AspNetCore.Mvc;
+    using System.Linq;
     using System.Threading.Tasks;
 
     [Route("api/[controller]")]
-    [ApiController]
-    public class PersonaController
+
+    public class PersonaController : AccesoComun
     {
         private readonly PersonaBL personaBL;
         private readonly IMapper mapper;
@@ -33,9 +34,12 @@
         /// <param name="persona">DTO persona</param>
         [HttpPost]
         [Route(nameof(PersonaController.ConsultarPersona))]
-        public async Task<Respuesta<PersonaCO>> ConsultarPersona(PersonaCO persona)
+        public async Task<Respuesta<PersonaCO>> ConsultarPersona([FromBody] PersonaCO persona)
         {
-            return mapper.Map<Respuesta<IPersonaDTO>, Respuesta<PersonaCO>>(await personaBL.ConsultarPersona(mapper.Map<PersonaCO, IPersonaDTO>(persona)));
+            if (ObjIsNull(persona) || !TryValidateModel(persona))
+                return CrearRespuesta<PersonaCO>.Fallida(MensajeError());
+
+            return mapper.Map<Respuesta<IPersonaDTO>, Respuesta<PersonaCO>>(await personaBL.ConsultarPersona(persona));
         }
 
         //public Task<Respuesta<IPersonaDTO>> EditarPersona(IPersonaDTO persona)
@@ -52,5 +56,12 @@
         //{
         //    throw new System.NotImplementedException();
         //}
+
+        private string MensajeError()
+        {
+            return ModelState.Select(x => x.Value.Errors)
+                             .Where(y => y.Count > 0)
+                             .First().First().ErrorMessage.ToString();
+        }
     }
 }
