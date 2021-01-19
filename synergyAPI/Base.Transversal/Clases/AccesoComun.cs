@@ -1,6 +1,6 @@
 ﻿namespace Base.Transversal.Clases
 {
-    public abstract class AccesoComun : DelegadoTryCatch
+    public class AccesoComun : Delegados
     {
     }
 }

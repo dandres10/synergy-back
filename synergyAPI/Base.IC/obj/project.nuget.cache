@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "c6EKgRvPSQtKKrZQHUEf7eJcCUZNCmUSneC0tKqgvygEvQII5MLFju8npFtG5nwRdKe4arA7QcVBM5rGn5W7Tw==",
+  "dgSpecHash": "L/uyHtUrl5ZVrWk/ouu07/gunnNhXuCFcIjFBznC1BzXzdoNNwt5T8bDhWe0k9IWKIRZBp0dN2oKpSh687oqLw==",
   "success": true,
   "projectFilePath": "D:\\synergy\\synergy-back\\synergyAPI\\Base.IC\\Base.IC.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Andres\\.nuget\\packages\\automapper\\10.1.0\\automapper.10.1.0.nupkg.sha512",
+    "C:\\Users\\Andres\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\Andres\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.0\\automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",
     "C:\\Users\\Andres\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Andres\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",

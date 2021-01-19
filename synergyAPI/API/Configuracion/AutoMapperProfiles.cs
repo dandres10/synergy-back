@@ -2,6 +2,7 @@
 {
     using API.CO.Entidades;
     using AutoMapper;
+    using Base.Datos.Contexto.Entidades;
     using Base.IC.DTO.Entidades;
     using Base.Negocio.BO.Entidades;
     using Base.Transversal.Clases;
@@ -15,6 +16,7 @@
             CreateMap<Respuesta<PersonaCO>, Respuesta<IPersonaDTO>>().ReverseMap();
             CreateMap<PersonaBO, IPersonaDTO>().ReverseMap();
             CreateMap<PersonaCO, IPersonaDTO>().ReverseMap();
+            CreateMap<Persona, IPersonaDTO>().ReverseMap();
         }
     }
 }

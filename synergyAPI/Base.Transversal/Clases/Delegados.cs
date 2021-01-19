@@ -3,15 +3,15 @@
     using System;
     using System.Threading.Tasks;
 
-    public class DelegadoTryCatch : Validaciones
+    public class Delegados : Validaciones
     {
-        public delegate Task<dynamic> DelegadoET();
+        public delegate Task<dynamic> EjecutarCodigo();
 
-        public static async Task<dynamic> EjecutarTransaccionAsync(DelegadoET delegado)
+        public static async Task<dynamic> EjecutarTransaccionAsync(EjecutarCodigo ejecutarCodigo)
         {
             try
             {
-                return await delegado();
+                return await ejecutarCodigo();
             }
             catch (Exception error)
             {

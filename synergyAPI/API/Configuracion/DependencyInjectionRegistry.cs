@@ -42,7 +42,7 @@
             //Configuracion de los cors
             services.AddCors(opt =>
             {
-                opt.AddPolicy("Default_CorsPolicy", o =>
+                opt.AddPolicy("ApiCorsPolicy", o =>
                 {
                     o.AllowAnyHeader();
                     o.AllowAnyMethod();
@@ -60,9 +60,6 @@
             //}));
 
             services.AddControllers();
-
-
-
 
             #endregion Configuraciones de servicos para la API
 

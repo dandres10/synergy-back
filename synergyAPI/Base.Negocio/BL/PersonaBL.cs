@@ -7,7 +7,7 @@
     using Base.Transversal.Clases;
     using System.Threading.Tasks;
 
-    public class PersonaBL : IPersonaAccion
+    public class PersonaBL : AccesoComun, IPersonaAccion
     {
         private readonly PersonaDAL personaDAL;
         private readonly IMapper mapper;

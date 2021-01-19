@@ -14,13 +14,11 @@
     {
         private readonly Context context;
         private readonly IMapper mapper;
-        private Persona persona;
 
         public PersonaDAL(Context context, IMapper mapper)
         {
             this.context = context;
             this.mapper = mapper;
-            persona = new Persona();
         }
 
         public Task<Respuesta<IPersonaDTO>> ConsultarListaPersona(IPersonaDTO persona)
@@ -32,11 +30,12 @@
         {
             return await EjecutarTransaccionAsync(async () =>
             {
-                persona = await context.Personas.FirstOrDefaultAsync(x => x.Id.Equals(persona.Id));
-                if (ObjIsNull(persona))
-                    return CrearRespuesta<IPersonaDTO>.Advertencia(persona, MensajesBaseEspanol.NoData);
+                Persona personaDO = mapper.Map<IPersonaDTO, Persona>(persona);
+                personaDO = await context.Personas.FirstOrDefaultAsync(x => x.Id.Equals(personaDO.Id));
+                if (ObjIsNull(personaDO))
+                    return CrearRespuesta<IPersonaDTO>.Advertencia(mapper.Map<Persona, IPersonaDTO>(personaDO), MensajesBaseEspanol.NoData);
 
-                return CrearRespuesta<IPersonaDTO>.Exitosa(persona);
+                return CrearRespuesta<IPersonaDTO>.Exitosa(mapper.Map<IPersonaDTO>(personaDO));
             });
         }
 

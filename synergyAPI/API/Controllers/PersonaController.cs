@@ -39,7 +39,7 @@
             if (ObjIsNull(persona) || !TryValidateModel(persona))
                 return CrearRespuesta<PersonaCO>.Fallida(MensajeError());
 
-            return mapper.Map<Respuesta<IPersonaDTO>, Respuesta<PersonaCO>>(await personaBL.ConsultarPersona(persona));
+            return mapper.Map<Respuesta<IPersonaDTO>, Respuesta<PersonaCO>>(await personaBL.ConsultarPersona(mapper.Map<PersonaCO, IPersonaDTO>(persona)));
         }
 
         //public Task<Respuesta<IPersonaDTO>> EditarPersona(IPersonaDTO persona)

@@ -1,16 +1,15 @@
 ﻿namespace API.CO.Entidades
 {
-    using Base.IC.DTO.Entidades;
     using Base.Transversal.Clases;
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    public class PersonaCO : IPersonaDTO
+    public class PersonaCO
     {
         [GuidRequerido]
-        public Guid Id { get; set; }
+        public Guid? Id { get; set; }
 
-        [Required(ErrorMessage = "Required")]
+        [Required(ErrorMessage = "El campo primer nombre es requerido. ")]
         public string PrimerNombre { get; set; }
 
         public string SegundoNombre { get; set; }
