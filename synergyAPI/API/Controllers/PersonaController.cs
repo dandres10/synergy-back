@@ -6,6 +6,7 @@
     using Base.Negocio.BL;
     using Base.Transversal.Clases;
     using Microsoft.AspNetCore.Mvc;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -22,10 +23,16 @@
             this.mapper = mapper;
         }
 
-        //public Task<Respuesta<IPersonaDTO>> ConsultarListaPersona(IPersonaDTO persona)
-        //{
-        //    throw new System.NotImplementedException();
-        //}
+        /// <summary>
+        ///     Consultar lista de personas.
+        /// </summary>
+        /// <author>Marlon León</author>
+        [HttpGet]
+        [Route(nameof(PersonaController.ConsultarListaPersona))]
+        public async Task<Respuesta<List<PersonaDTO>>> ConsultarListaPersona()
+        {
+            return mapper.Map<Respuesta<List<IPersonaDTO>>, Respuesta<List<PersonaDTO>>>(await personaBL.ConsultarListaPersona());
+        }
 
         /// <summary>
         ///     Consultar una persona.
@@ -34,12 +41,12 @@
         /// <param name="persona">DTO persona</param>
         [HttpPost]
         [Route(nameof(PersonaController.ConsultarPersona))]
-        public async Task<Respuesta<PersonaCO>> ConsultarPersona([FromBody] PersonaCO persona)
+        public async Task<Respuesta<PersonaDTO>> ConsultarPersona([FromBody] PersonaDTO persona)
         {
             if (ObjIsNull(persona) || !TryValidateModel(persona))
-                return CrearRespuesta<PersonaCO>.Fallida(MensajeError());
+                return CrearRespuesta<PersonaDTO>.Fallida(MensajeError());
 
-            return mapper.Map<Respuesta<IPersonaDTO>, Respuesta<PersonaCO>>(await personaBL.ConsultarPersona(mapper.Map<PersonaCO, IPersonaDTO>(persona)));
+            return mapper.Map<Respuesta<IPersonaDTO>, Respuesta<PersonaDTO>>(await personaBL.ConsultarPersona(mapper.Map<PersonaDTO, IPersonaDTO>(persona)));
         }
 
         //public Task<Respuesta<IPersonaDTO>> EditarPersona(IPersonaDTO persona)

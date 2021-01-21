@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <Folder Include="DO\Consultas\" />
+    <Folder Include="DO\Entidades\" />
   </ItemGroup>
 
 </Project>

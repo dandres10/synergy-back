@@ -5,6 +5,7 @@
     using Base.IC.Acciones.Entidades;
     using Base.IC.DTO.Entidades;
     using Base.Transversal.Clases;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     public class PersonaBL : AccesoComun, IPersonaAccion
@@ -18,9 +19,9 @@
             this.mapper = mapper;
         }
 
-        public Task<Respuesta<IPersonaDTO>> ConsultarListaPersona(IPersonaDTO persona)
+        public async Task<Respuesta<List<IPersonaDTO>>> ConsultarListaPersona()
         {
-            throw new System.NotImplementedException();
+            return await personaDAL.ConsultarListaPersona();
         }
 
         public async Task<Respuesta<IPersonaDTO>> ConsultarPersona(IPersonaDTO persona)

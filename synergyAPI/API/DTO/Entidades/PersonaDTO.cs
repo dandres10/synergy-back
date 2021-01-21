@@ -4,7 +4,7 @@
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    public class PersonaCO
+    public class PersonaDTO
     {
         [GuidRequerido]
         public Guid? Id { get; set; }

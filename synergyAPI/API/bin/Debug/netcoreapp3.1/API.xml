@@ -4,7 +4,13 @@
         <name>API</name>
     </assembly>
     <members>
-        <member name="M:API.Controllers.PersonaController.ConsultarPersona(API.CO.Entidades.PersonaCO)">
+        <member name="M:API.Controllers.PersonaController.ConsultarListaPersona">
+            <summary>
+                Consultar lista de personas.
+            </summary>
+            <author>Marlon León</author>
+        </member>
+        <member name="M:API.Controllers.PersonaController.ConsultarPersona(API.CO.Entidades.PersonaDTO)">
             <summary>
                 Consultar una persona.
             </summary>

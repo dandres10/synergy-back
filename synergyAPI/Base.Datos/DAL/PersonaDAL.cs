@@ -8,6 +8,7 @@
     using Base.Transversal.Mensajes;
     using Microsoft.EntityFrameworkCore;
     using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     public class PersonaDAL : AccesoComun, IPersonaAccion
@@ -21,9 +22,16 @@
             this.mapper = mapper;
         }
 
-        public Task<Respuesta<IPersonaDTO>> ConsultarListaPersona(IPersonaDTO persona)
+        public async Task<Respuesta<List<IPersonaDTO>>> ConsultarListaPersona()
         {
-            throw new NotImplementedException();
+            return await EjecutarTransaccionAsync(async () =>
+            {
+                List<Persona> personas = await context.Personas.ToListAsync();
+                if (ObjIsNull(personas))
+                    return CrearRespuesta<IPersonaDTO>.AdvertenciaLista(mapper.Map<List<Persona>, List<IPersonaDTO>>(personas), MensajesBaseEspanol.NoData);
+
+                return CrearRespuesta<IPersonaDTO>.ExitosaLista(mapper.Map<List<IPersonaDTO>>(personas));
+            });
         }
 
         public async Task<Respuesta<IPersonaDTO>> ConsultarPersona(IPersonaDTO persona)
