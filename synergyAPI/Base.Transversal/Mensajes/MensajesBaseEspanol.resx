@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CreateData" xml:space="preserve">
-    <value>Se creo correctamente.</value>
+    <value>Se guardo correctamente.</value>
   </data>
   <data name="DeleteData" xml:space="preserve">
     <value>Se elimino correctamente.</value>
@@ -128,6 +128,12 @@
   </data>
   <data name="Required" xml:space="preserve">
     <value>El campo {0} es requerido.</value>
+  </data>
+  <data name="SuccessfulConsultation" xml:space="preserve">
+    <value>Consulta exitosa.</value>
+  </data>
+  <data name="UnidentifiedError" xml:space="preserve">
+    <value>Error no identificado.</value>
   </data>
   <data name="UpdateData" xml:space="preserve">
     <value>Se actualizo correctamente.</value>

@@ -1,6 +1,7 @@
 D:\synergy\synergy-back\synergyAPI\Base.Transversal\bin\Debug\netcoreapp3.1\Base.Transversal.deps.json
 D:\synergy\synergy-back\synergyAPI\Base.Transversal\bin\Debug\netcoreapp3.1\Base.Transversal.dll
 D:\synergy\synergy-back\synergyAPI\Base.Transversal\bin\Debug\netcoreapp3.1\Base.Transversal.pdb
+D:\synergy\synergy-back\synergyAPI\Base.Transversal\obj\Debug\netcoreapp3.1\Base.Transversal.Mensajes.Base.resources
 D:\synergy\synergy-back\synergyAPI\Base.Transversal\obj\Debug\netcoreapp3.1\Base.Transversal.Mensajes.MensajesBaseEspanol.resources
 D:\synergy\synergy-back\synergyAPI\Base.Transversal\obj\Debug\netcoreapp3.1\Base.Transversal.Mensajes.MensajesBaseIngles.resources
 D:\synergy\synergy-back\synergyAPI\Base.Transversal\obj\Debug\netcoreapp3.1\Base.Transversal.csproj.GenerateResource.cache
@@ -9,3 +10,4 @@ D:\synergy\synergy-back\synergyAPI\Base.Transversal\obj\Debug\netcoreapp3.1\Base
 D:\synergy\synergy-back\synergyAPI\Base.Transversal\obj\Debug\netcoreapp3.1\Base.Transversal.csproj.CoreCompileInputs.cache
 D:\synergy\synergy-back\synergyAPI\Base.Transversal\obj\Debug\netcoreapp3.1\Base.Transversal.dll
 D:\synergy\synergy-back\synergyAPI\Base.Transversal\obj\Debug\netcoreapp3.1\Base.Transversal.pdb
+D:\synergy\synergy-back\synergyAPI\Base.Transversal\obj\Debug\netcoreapp3.1\Base.Transversal.csprojAssemblyReference.cache

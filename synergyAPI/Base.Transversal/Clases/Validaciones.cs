@@ -4,9 +4,10 @@
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    public class Validaciones : ControllerBase
+    public class Validaciones: ControllerBase
     {
-        public static bool ObjIsNull(dynamic Obj) => Obj == null ? true : false;
+       
+        public static bool IsNull(dynamic Obj) => Obj == null ? true : false;
     }
 
     public class GuidRequeridoAttribute : ValidationAttribute

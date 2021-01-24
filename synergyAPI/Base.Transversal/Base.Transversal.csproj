@@ -11,6 +11,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Mensajes\Base.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Base.resx</DependentUpon>
+    </Compile>
     <Compile Update="Mensajes\MensajesBaseIngles.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -24,6 +29,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Mensajes\Base.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Base.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Mensajes\MensajesBaseIngles.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>MensajesBaseIngles.Designer.cs</LastGenOutput>

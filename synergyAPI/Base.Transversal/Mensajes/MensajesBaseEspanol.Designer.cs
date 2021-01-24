@@ -61,7 +61,7 @@ namespace Base.Transversal.Mensajes {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Se creo correctamente..
+        ///   Busca una cadena traducida similar a Se guardo correctamente..
         /// </summary>
         public static string CreateData {
             get {
@@ -93,6 +93,24 @@ namespace Base.Transversal.Mensajes {
         public static string Required {
             get {
                 return ResourceManager.GetString("Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Consulta exitosa..
+        /// </summary>
+        public static string SuccessfulConsultation {
+            get {
+                return ResourceManager.GetString("SuccessfulConsultation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error no identificado..
+        /// </summary>
+        public static string UnidentifiedError {
+            get {
+                return ResourceManager.GetString("UnidentifiedError", resourceCulture);
             }
         }
         

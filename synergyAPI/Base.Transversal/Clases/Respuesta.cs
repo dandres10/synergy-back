@@ -7,5 +7,6 @@
         public T Resultado { get; set; }
         public string Mensaje { get; set; }
         public TipoNotificacionEnum TipoNotificacion { get; set; }
+        public bool EsValido { get; set; }
     }
 }
