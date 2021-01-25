@@ -9,6 +9,18 @@
     {
         public delegate Task<dynamic> EjecutarCodigo();
 
+        public static async Task<dynamic> EjecutarTransaccionAsync(EjecutarCodigo ejecutarCodigo)
+        {
+            try
+            {
+                return await ejecutarCodigo();
+            }
+            catch (Exception error)
+            {
+                return CrearRespuesta<dynamic>.Fallida(error.Message.ToString());
+            }
+        }
+
         public static async Task<dynamic> EjecutarTransaccionAsync(EjecutarCodigo ejecutarCodigo, Context context, string nombreMetodo)
         {
             try

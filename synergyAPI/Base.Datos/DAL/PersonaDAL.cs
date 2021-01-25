@@ -1,5 +1,7 @@
 ﻿namespace Base.Datos.DAL
 {
+    #region Importaciones
+
     using AutoMapper;
     using Base.Datos.Configuracion;
     using Base.Datos.Contexto.Entidades;
@@ -11,6 +13,8 @@
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+
+    #endregion Importaciones
 
     public class PersonaDAL : AccesoComunDAL, IPersonaAccion
     {
@@ -31,7 +35,7 @@
                        return CrearRespuesta<IPersonaDTO>.AdvertenciaLista(null, MensajesBaseEspanol.NoData);
 
                    return CrearRespuesta<IPersonaDTO>.ExitosaLista(MapListIPersonaDTO(personas));
-               }, context, nameof(PersonaDAL.ConsultarListaPersona));
+               });
 
         public async Task<Respuesta<IPersonaDTO>> ConsultarPersona(IPersonaDTO persona)
             => await EjecutarTransaccionAsync(async () =>
@@ -42,7 +46,7 @@
                        return CrearRespuesta<IPersonaDTO>.Advertencia(null, MensajesBaseEspanol.NoData);
 
                    return CrearRespuesta<IPersonaDTO>.Exitosa(MapIPersonaDTO(personaDO), MensajesBaseEspanol.SuccessfulConsultation);
-               }, context, nameof(PersonaDAL.ConsultarPersona));
+               });
 
         public async Task<Respuesta<IPersonaDTO>> EditarPersona(IPersonaDTO persona)
             => await EjecutarTransaccionAsync(async () =>
@@ -51,7 +55,7 @@
                     context.Entry(personaDO).State = EntityState.Modified;
                     await context.SaveChangesAsync();
                     return CrearRespuesta<IPersonaDTO>.Exitosa(null, MensajesBaseEspanol.UpdateData);
-                }, context, nameof(PersonaDAL.EditarPersona));
+                });
 
         public async Task<Respuesta<IPersonaDTO>> EliminarPersona(IPersonaDTO persona)
             => await EjecutarTransaccionAsync(async () =>
@@ -70,7 +74,9 @@
                    context.Personas.Add(personaDO);
                    await context.SaveChangesAsync();
                    return CrearRespuesta<IPersonaDTO>.Exitosa(null, MensajesBaseEspanol.CreateData);
-               }, context, nameof(PersonaDAL.GuardarPersona));
+               });
+
+        #region Metodos Privados
 
         private Persona MapPersona(IPersonaDTO persona)
             => mapper.Map<IPersonaDTO, Persona>(persona);
@@ -80,5 +86,7 @@
 
         private List<IPersonaDTO> MapListIPersonaDTO(List<Persona> persona)
             => mapper.Map<List<Persona>, List<IPersonaDTO>>(persona);
+
+        #endregion Metodos Privados
     }
 }
