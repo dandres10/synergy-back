@@ -34,3 +34,8 @@ synergyAPI/Base.Datos/obj/project.assets.json
 synergyAPI/Base.Datos/obj/project.nuget.cache
 synergyAPI/Base.Datos/obj/Debug/netcoreapp3.1/Base.Datos.csprojAssemblyReference.cache
 synergyAPI/Base.IC/obj/Base.IC.csproj.nuget.dgspec.json
+synergyAPI/API/bin/
+synergyAPI/Base.Datos/bin/
+synergyAPI/Base.Datos/obj/
+synergyAPI/Base.Negocio/bin/
+synergyAPI/Base.Transversal/obj/
