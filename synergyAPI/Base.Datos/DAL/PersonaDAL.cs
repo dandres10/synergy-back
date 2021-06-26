@@ -1,21 +1,18 @@
 ﻿namespace Base.Datos.DAL
 {
     #region Importaciones
-
-    using AutoMapper;
-    using Base.Datos.Configuracion;
-    using Base.Datos.Contexto.Entidades;
-    using Base.IC.Acciones.Entidades;
-    using Base.IC.DTO.Entidades;
-    using Base.Transversal.Clases;
-    using Base.Transversal.Mensajes;
-    using Microsoft.EntityFrameworkCore;
     using System;
-    using System.Collections.Generic;
+    using AutoMapper;
+    using Base.IC.DTO.Entidades;
     using System.Threading.Tasks;
-
-    #endregion Importaciones
-
+    using Base.Transversal.Clases;
+    using Base.Datos.Configuracion;
+    using Base.Transversal.Mensajes;
+    using System.Collections.Generic;
+    using Base.IC.Acciones.Entidades;
+    using Base.Datos.Contexto.Entidades;
+    using Microsoft.EntityFrameworkCore;
+    #endregion Fin Importaciones
     public class PersonaDAL : AccesoComunDAL, IPersonaAccion
     {
         private readonly Context context;
@@ -28,28 +25,26 @@
         }
 
         public async Task<Respuesta<List<IPersonaDTO>>> ConsultarListaPersona()
-            => await EjecutarTransaccionAsync(async () =>
-               {
-                   List<Persona> personas = await context.Personas.AsNoTracking().ToListAsync();
-                   if (IsNull(personas))
-                       return CrearRespuesta<IPersonaDTO>.AdvertenciaLista(null, MensajesBaseEspanol.NoData);
-
-                   return CrearRespuesta<IPersonaDTO>.ExitosaLista(MapListIPersonaDTO(personas));
-               });
+                => await EjecutarTransaccionAsync(async () =>
+                {
+                    List<Persona> persona = await context.Personas.AsNoTracking().ToListAsync();
+                    if (IsNull(persona))
+                        return CrearRespuesta<IPersonaDTO>.AdvertenciaLista(null, MensajesBaseEspanol.NoData);
+                    return CrearRespuesta<IPersonaDTO>.ExitosaLista(MapListIPersonaDTO(persona));
+                });
 
         public async Task<Respuesta<IPersonaDTO>> ConsultarPersona(IPersonaDTO persona)
-            => await EjecutarTransaccionAsync(async () =>
-               {
-                   Persona personaDO = MapPersona(persona);
-                   personaDO = await context.Personas.AsNoTracking().FirstOrDefaultAsync(x => x.Id.Equals(personaDO.Id));
-                   if (IsNull(personaDO))
-                       return CrearRespuesta<IPersonaDTO>.Advertencia(null, MensajesBaseEspanol.NoData);
-
-                   return CrearRespuesta<IPersonaDTO>.Exitosa(MapIPersonaDTO(personaDO), MensajesBaseEspanol.SuccessfulConsultation);
-               });
+                => await EjecutarTransaccionAsync(async () =>
+                {
+                    Persona personaDO = MapPersona(persona);
+                    personaDO = await context.Personas.AsNoTracking().FirstOrDefaultAsync(x => x.Id.Equals(personaDO.Id));
+                    if (IsNull(personaDO))
+                        return CrearRespuesta<IPersonaDTO>.Advertencia(null, MensajesBaseEspanol.NoData);
+                    return CrearRespuesta<IPersonaDTO>.Exitosa(MapIPersonaDTO(personaDO), MensajesBaseEspanol.SuccessfulConsultation);
+                });
 
         public async Task<Respuesta<IPersonaDTO>> EditarPersona(IPersonaDTO persona)
-            => await EjecutarTransaccionAsync(async () =>
+                => await EjecutarTransaccionAsync(async () =>
                 {
                     Persona personaDO = MapPersona(persona);
                     context.Entry(personaDO).State = EntityState.Modified;
@@ -58,23 +53,23 @@
                 });
 
         public async Task<Respuesta<IPersonaDTO>> EliminarPersona(IPersonaDTO persona)
-            => await EjecutarTransaccionAsync(async () =>
-                    {
-                        Persona personaDO = MapPersona(persona);
-                        context.Personas.Remove(personaDO);
-                        await context.SaveChangesAsync();
-                        return CrearRespuesta<IPersonaDTO>.Exitosa(null, MensajesBaseEspanol.DeleteData);
-                    }, context, nameof(PersonaDAL.EliminarPersona));
+                => await EjecutarTransaccionAsync(async () =>
+                {
+                    Persona personaDO = MapPersona(persona);
+                    context.Personas.Remove(personaDO);
+                    await context.SaveChangesAsync();
+                    return CrearRespuesta<IPersonaDTO>.Exitosa(null, MensajesBaseEspanol.DeleteData);
+                });
 
         public async Task<Respuesta<IPersonaDTO>> GuardarPersona(IPersonaDTO persona)
-            => await EjecutarTransaccionAsync(async () =>
-               {
-                   Persona personaDO = MapPersona(persona);
-                   personaDO.Id = Guid.NewGuid();
-                   context.Personas.Add(personaDO);
-                   await context.SaveChangesAsync();
-                   return CrearRespuesta<IPersonaDTO>.Exitosa(null, MensajesBaseEspanol.CreateData);
-               });
+                => await EjecutarTransaccionAsync(async () =>
+                {
+                    Persona personaDO = MapPersona(persona);
+                    
+                    context.Personas.Add(personaDO);
+                    await context.SaveChangesAsync();
+                    return CrearRespuesta<IPersonaDTO>.Exitosa(null, MensajesBaseEspanol.CreateData);
+                });
 
         #region Metodos Privados
 
@@ -87,6 +82,6 @@
         private List<IPersonaDTO> MapListIPersonaDTO(List<Persona> persona)
             => mapper.Map<List<Persona>, List<IPersonaDTO>>(persona);
 
-        #endregion Metodos Privados
+        #endregion Fin Metodos Privados
     }
 }

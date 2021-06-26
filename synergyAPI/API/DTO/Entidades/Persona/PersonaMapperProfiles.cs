@@ -1,6 +1,5 @@
 ﻿namespace API.DTO.Entidades.Persona
 {
-    using API.CO.Entidades.Persona;
     using AutoMapper;
     using Base.Datos.Contexto.Entidades;
     using Base.IC.DTO.Entidades;
@@ -8,9 +7,9 @@
     using Base.Transversal.Clases;
     using System.Collections.Generic;
 
-    public class MapperProfiles : Profile
+    public class PersonaMapperProfiles : Profile
     {
-        public MapperProfiles()
+        public PersonaMapperProfiles()
         {
             CreateMap<Persona, IPersonaDTO>().ReverseMap();
             CreateMap<PersonaBO, IPersonaDTO>().ReverseMap();

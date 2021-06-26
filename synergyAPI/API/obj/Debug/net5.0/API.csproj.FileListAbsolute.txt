@@ -1,10 +1,3 @@
-D:\synergy\synergy-back\synergyAPI\API\obj\Debug\net5.0\API.csprojAssemblyReference.cache
-D:\synergy\synergy-back\synergyAPI\API\obj\Debug\net5.0\API.GeneratedMSBuildEditorConfig.editorconfig
-D:\synergy\synergy-back\synergyAPI\API\obj\Debug\net5.0\API.AssemblyInfoInputs.cache
-D:\synergy\synergy-back\synergyAPI\API\obj\Debug\net5.0\API.AssemblyInfo.cs
-D:\synergy\synergy-back\synergyAPI\API\obj\Debug\net5.0\API.csproj.CoreCompileInputs.cache
-D:\synergy\synergy-back\synergyAPI\API\obj\Debug\net5.0\API.MvcApplicationPartsAssemblyInfo.cs
-D:\synergy\synergy-back\synergyAPI\API\obj\Debug\net5.0\API.MvcApplicationPartsAssemblyInfo.cache
 D:\synergy\synergy-back\synergyAPI\API\bin\Debug\net5.0\appsettings.Development.json
 D:\synergy\synergy-back\synergyAPI\API\bin\Debug\net5.0\appsettings.json
 D:\synergy\synergy-back\synergyAPI\API\bin\Debug\net5.0\API.exe
@@ -63,6 +56,13 @@ D:\synergy\synergy-back\synergyAPI\API\bin\Debug\net5.0\Base.IC.pdb
 D:\synergy\synergy-back\synergyAPI\API\bin\Debug\net5.0\Base.Negocio.pdb
 D:\synergy\synergy-back\synergyAPI\API\bin\Debug\net5.0\Base.Transversal.pdb
 D:\synergy\synergy-back\synergyAPI\API\bin\Debug\net5.0\Base.Datos.pdb
+D:\synergy\synergy-back\synergyAPI\API\obj\Debug\net5.0\API.csprojAssemblyReference.cache
+D:\synergy\synergy-back\synergyAPI\API\obj\Debug\net5.0\API.GeneratedMSBuildEditorConfig.editorconfig
+D:\synergy\synergy-back\synergyAPI\API\obj\Debug\net5.0\API.AssemblyInfoInputs.cache
+D:\synergy\synergy-back\synergyAPI\API\obj\Debug\net5.0\API.AssemblyInfo.cs
+D:\synergy\synergy-back\synergyAPI\API\obj\Debug\net5.0\API.csproj.CoreCompileInputs.cache
+D:\synergy\synergy-back\synergyAPI\API\obj\Debug\net5.0\API.MvcApplicationPartsAssemblyInfo.cs
+D:\synergy\synergy-back\synergyAPI\API\obj\Debug\net5.0\API.MvcApplicationPartsAssemblyInfo.cache
 D:\synergy\synergy-back\synergyAPI\API\obj\Debug\net5.0\staticwebassets\API.StaticWebAssets.Manifest.cache
 D:\synergy\synergy-back\synergyAPI\API\obj\Debug\net5.0\staticwebassets\API.StaticWebAssets.xml
 D:\synergy\synergy-back\synergyAPI\API\obj\Debug\net5.0\scopedcss\bundle\API.styles.css

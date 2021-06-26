@@ -2,7 +2,6 @@
 {
     #region Importaciones
 
-    using API.CO.Entidades.Persona;
     using API.Configuracion;
     using API.DTO.Entidades.Persona;
     using AutoMapper;
@@ -34,7 +33,7 @@
         /// <summary>
         ///     Consultar lista persona.
         /// </summary>
-        /// <author>Marlon León</author>
+        /// <author>Generador Codigo 1.0.0</author>
         [HttpGet]
         [Route(nameof(PersonaController.ConsultarListaPersona))]
         public async Task<Respuesta<List<PersonaDTO>>> ConsultarListaPersona()
@@ -43,7 +42,7 @@
         /// <summary>
         ///     Consultar persona.
         /// </summary>
-        /// <author>Marlon León</author>
+        /// <author>Generador Codigo 1.0.0</author>
         /// <param name="persona">DTO persona</param>
         [HttpPost]
         [Route(nameof(PersonaController.ConsultarPersona))]
@@ -51,14 +50,13 @@
         {
             if (EntidadValida(persona))
                 return CrearRespuesta<PersonaDTO>.Fallida(MensajeError());
-
             return MapRespuestaPersonaDTO(await personaBL.ConsultarPersona(mapper.Map<PersonaDTO, IPersonaDTO>(persona)));
         }
 
         /// <summary>
         ///     Editar persona.
         /// </summary>
-        /// <author>Marlon León</author>
+        /// <author>Generador Codigo 1.0.0</author>
         /// <param name="persona">DTO persona</param>
         [HttpPost]
         [Route(nameof(PersonaController.EditarPersona))]
@@ -72,7 +70,7 @@
         /// <summary>
         ///     Eliminar persona.
         /// </summary>
-        /// <author>Marlon León</author>
+        /// <author>Generador Codigo 1.0.0</author>
         /// <param name="persona">DTO persona</param>
         [HttpPost]
         [Route(nameof(PersonaController.EliminarPersona))]
@@ -86,7 +84,7 @@
         /// <summary>
         ///     Guardar persona.
         /// </summary>
-        /// <author>Marlon León</author>
+        /// <author>Generador Codigo 1.0.0</author>
         /// <param name="persona">DTO persona</param>
         [HttpPost]
         [Route(nameof(PersonaController.GuardarPersona))]
@@ -110,8 +108,8 @@
         private Respuesta<GuardarPersonaDTO> MapRespuestaGuardarPersonaDTO(Respuesta<IPersonaDTO> persona)
             => mapper.Map<Respuesta<IPersonaDTO>, Respuesta<GuardarPersonaDTO>>(persona);
 
-        private Respuesta<List<PersonaDTO>> MapRespuestaListPersonaDTO(Respuesta<List<IPersonaDTO>> personas)
-            => mapper.Map<Respuesta<List<IPersonaDTO>>, Respuesta<List<PersonaDTO>>>(personas);
+        private Respuesta<List<PersonaDTO>> MapRespuestaListPersonaDTO(Respuesta<List<IPersonaDTO>> persona)
+            => mapper.Map<Respuesta<List<IPersonaDTO>>, Respuesta<List<PersonaDTO>>>(persona);
 
         private bool EntidadValida<T>(T entidad)
          => IsNull(entidad) || !TryValidateModel(entidad);
