@@ -1,5 +1,6 @@
 ﻿namespace Base.IC.Acciones.Entidades
 {
+    using Base.IC.DTO.Consultas;
     using Base.IC.DTO.Entidades;
     using Base.Transversal.Clases;
     using System.Collections.Generic;
@@ -16,5 +17,9 @@
         Task<Respuesta<List<IPersonaDTO>>> ConsultarListaPersona();
 
         Task<Respuesta<IPersonaDTO>> EliminarPersona(IPersonaDTO persona);
+
+
+
+        
     }
 }

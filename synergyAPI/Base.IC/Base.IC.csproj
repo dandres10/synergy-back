@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DTO\Consultas\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Base.Transversal\Base.Transversal.csproj" />
   </ItemGroup>
 

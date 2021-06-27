@@ -24,6 +24,8 @@ namespace API
         {
             services.AddAutoMapper(typeof(Startup));
             services.AddMyServices();
+            services.AddJwt(Configuration);
+
             services.AddDbContext<Context>(options
                 => options.UseSqlServer(Configuration.GetConnectionString("AppConnection")));
         }
@@ -44,15 +46,16 @@ namespace API
             }
 
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+
+
+
         }
     }
 }

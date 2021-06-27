@@ -38,5 +38,12 @@
             <author>Generador Codigo 1.0.0</author>
             <param name="persona">DTO persona</param>
         </member>
+        <member name="M:API.Controllers.PersonaController.AutenticarPersona(API.DTO.Consultas.PersonaLoginDTO)">
+            <summary>
+                Autenticar persona.
+            </summary>
+            <author>Generador Codigo 1.0.0</author>
+            <param name="personaLogin">DTO personaLogin</param>
+        </member>
     </members>
 </doc>
