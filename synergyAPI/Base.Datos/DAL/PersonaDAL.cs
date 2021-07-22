@@ -93,7 +93,8 @@
                                                    NombreRoles = s.GrupoRols.Where(w => w.RolNavigation.Estado == true)
                                                                       .Select(gs => gs.RolNavigation.Nombre).ToList(),
                                                    CodigoRoles = s.GrupoRols.Where(w => w.RolNavigation.Estado == true)
-                                                                      .Select(gs => gs.RolNavigation.Codigo.ToString()).ToList()
+                                                                      .Select(gs => gs.RolNavigation.Codigo.ToString()).ToList(),
+                                                   Estado = s.Estado ?? false
                                                }).FirstOrDefaultAsync();
 
                     if (IsNull(personaInfoDO))

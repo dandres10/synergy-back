@@ -45,7 +45,15 @@
 
                 string TokenGenerado = GenerarTokenJWT(personaInfoBO.Resultado);
 
-                return CrearRespuesta<IPersonaLoginTokenDTO>.Exitosa(new PersonaLoginTokenBO { Token = TokenGenerado }, null);
+                PersonaLoginTokenBO response = new PersonaLoginTokenBO
+                {
+                    Token = TokenGenerado,
+                    Correo = personaInfoBO.Resultado.Correo,
+                    Estado = personaInfoBO.Resultado.Estado,
+                    Nombre = string.Format("{0} {1}", personaInfoBO.Resultado.Nombres, personaInfoBO.Resultado.Apellidos)
+                };
+
+                return CrearRespuesta<IPersonaLoginTokenDTO>.Exitosa(response, null);
             });
 
         #region Metodos privados

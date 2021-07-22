@@ -14,6 +14,7 @@
         public List<string> NombreRoles { get; set; }
         public List<string> CodigoRoles { get; set; }
         public string Token { get; set; }
+        public bool Estado { get ; set ; }
     }
 
     public class PersonaLoginDTO : IPersonaLoginDTO
@@ -28,5 +29,8 @@
     public class PersonaLoginTokenDTO : IPersonaLoginTokenDTO
     {
         public string Token { get; set; }
+        public string Nombre { get ; set ; }
+        public bool Estado { get ; set ; }
+        public string Correo { get ; set ; }
     }
 }

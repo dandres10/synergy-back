@@ -13,6 +13,7 @@
         public List<string> NombreRoles { get; set; }
         public List<string> CodigoRoles { get; set; }
         public string Token { get; set; }
+        public bool Estado { get ; set ; }
     }
 
 

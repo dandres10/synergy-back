@@ -10,6 +10,7 @@
         public string Apellidos { get; set; }
         public string Correo { get; set; }
 
+        public bool Estado { get; set; }
         public string Token { get; set; }
         public List<string> NombreRoles { get; set; }
         public List<string> CodigoRoles { get; set; }
@@ -24,6 +25,8 @@
     public interface IPersonaLoginTokenDTO
     {
         public string Token { get; set; }
-        
+        public string Nombre { get; set; }
+        public bool Estado { get; set; }
+        public string Correo { get; set; }
     }
 }

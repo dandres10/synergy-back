@@ -13,6 +13,7 @@
         public List<string> NombreRoles { get; set; }
         public List<string> CodigoRoles { get; set; }
         public string Token { get; set; }
+        public bool Estado { get ; set ; }
     }
 
     public class PersonaLoginBO : IPersonaLoginDTO
@@ -24,5 +25,13 @@
     public class PersonaLoginTokenBO : IPersonaLoginTokenDTO
     {
         public string Token { get; set; }
+
+        public string Nombre { get; set; }
+
+        public bool Estado { get; set; }
+
+        public string Correo { get; set; }
+
+
     }
 }

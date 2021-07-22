@@ -53,7 +53,7 @@
             //V2
             //services.AddCors(options => options.AddPolicy("ApiCorsPolicy", build =>
             //{
-            //    build.WithOrigins("http://localhost:4200")
+            //    build.WithOrigins("http://localhost:3000")
             //         .AllowAnyMethod()
             //         .AllowAnyHeader();
 
