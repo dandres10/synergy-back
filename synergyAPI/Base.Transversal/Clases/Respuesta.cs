@@ -8,5 +8,6 @@
         public string Mensaje { get; set; }
         public TipoNotificacionEnum TipoNotificacion { get; set; }
         public bool EsValido { get; set; }
+        public TipoMensaje TipoMensaje { get; set; }
     }
 }

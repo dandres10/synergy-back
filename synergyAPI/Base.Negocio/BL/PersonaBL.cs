@@ -9,6 +9,7 @@
     using Base.Negocio.BO.Consultas;
     using Base.Negocio.Configuracion;
     using Base.Transversal.Clases;
+    using Base.Transversal.Enumeraciones;
     using Base.Transversal.Mensajes;
     using Microsoft.Extensions.Configuration;
     using Microsoft.IdentityModel.Tokens;
@@ -41,7 +42,7 @@
                         mapper.Map<Respuesta<IPersonaInfoDTO>, Respuesta<PersonaInfoBO>>(await personaDAL.AutenticarPersona(persona));
 
                 if (!personaInfoBO.EsValido)
-                    return CrearRespuesta<IPersonaLoginTokenDTO>.Fallida(MensajesBaseEspanol.NoData);
+                    return CrearRespuesta<IPersonaLoginTokenDTO>.Fallida(MensajesBaseEspanol.NoData, TipoMensaje.MensajeEstatico);
 
                 string TokenGenerado = GenerarTokenJWT(personaInfoBO.Resultado);
 

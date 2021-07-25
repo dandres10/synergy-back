@@ -10,6 +10,7 @@
     using Base.IC.DTO.Entidades;
     using Base.Negocio.BL;
     using Base.Transversal.Clases;
+    using Base.Transversal.Enumeraciones;
     using Base.Transversal.Mensajes;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
@@ -114,7 +115,7 @@
         public async Task<Respuesta<PersonaLoginTokenDTO>> AutenticarPersona([FromBody] PersonaLoginDTO personaLogin)
         {
             if (EntidadValida(personaLogin))
-                return CrearRespuesta<PersonaLoginTokenDTO>.Fallida(MensajeError());
+                return CrearRespuesta<PersonaLoginTokenDTO>.Fallida(MensajeError(),TipoMensaje.MensajeEstatico);
 
             return mapper.Map<Respuesta<IPersonaLoginTokenDTO>, Respuesta<PersonaLoginTokenDTO>>(await personaBL.AutenticarPersona(mapper.Map<PersonaLoginDTO, IPersonaLoginDTO>(personaLogin)));
         }

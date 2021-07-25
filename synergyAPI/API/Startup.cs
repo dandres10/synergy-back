@@ -27,7 +27,7 @@ namespace API
             services.AddJwt(Configuration);
 
             services.AddDbContext<Context>(options
-                => options.UseSqlServer(Configuration.GetConnectionString("AppConnection")));
+                => options.UseSqlServer(Configuration.GetConnectionString("AppConnection2")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

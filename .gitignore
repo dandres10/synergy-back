@@ -60,3 +60,10 @@ synergyAPI/Base.Negocio/obj/Debug/netcoreapp3.1/Base.Negocio.csproj.CoreCompileI
 synergyAPI/Base.Negocio/obj/Debug/netcoreapp3.1/Base.Negocio.csproj.FileListAbsolute.txt
 synergyAPI/Base.Transversal/bin/Debug/netcoreapp3.1/Base.Transversal.dll
 synergyAPI/Base.Transversal/bin/Debug/netcoreapp3.1/Base.Transversal.pdb
+synergyAPI/API/obj/Debug/
+synergyAPI/API/obj/
+synergyAPI/Base.IC/obj/
+synergyAPI/Base.Negocio/obj/
+synergyAPI/synergyAPI/obj/
+.vs/slnx.sqlite
+.vs/
