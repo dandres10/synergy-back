@@ -42,7 +42,7 @@
                         mapper.Map<Respuesta<IPersonaInfoDTO>, Respuesta<PersonaInfoBO>>(await personaDAL.AutenticarPersona(persona));
 
                 if (!personaInfoBO.EsValido)
-                    return CrearRespuesta<IPersonaLoginTokenDTO>.Fallida(MensajesBaseEspanol.NoData, TipoMensaje.MensajeEstatico);
+                    return CrearRespuesta<IPersonaLoginTokenDTO>.Fallida(MensajesBaseEspanol.NoData, TipoMensaje.MensajeTemporal);
 
                 string TokenGenerado = GenerarTokenJWT(personaInfoBO.Resultado);
 
