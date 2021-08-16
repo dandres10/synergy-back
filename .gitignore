@@ -67,3 +67,6 @@ synergyAPI/Base.Negocio/obj/
 synergyAPI/synergyAPI/obj/
 .vs/slnx.sqlite
 .vs/
+synergyAPI/GenerarContext/obj/Debug/
+synergyAPI/GenerarContext/obj/
+synergyAPI/GenerarContext/bin/

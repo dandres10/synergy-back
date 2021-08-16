@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
@@ -24,6 +26,8 @@ namespace Base.Datos.Contexto.Entidades
         public virtual DbSet<Rol> Rols { get; set; }
         public virtual DbSet<Sede> Sedes { get; set; }
         public virtual DbSet<Trazabilidad> Trazabilidads { get; set; }
+
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
