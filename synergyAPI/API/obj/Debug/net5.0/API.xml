@@ -4,6 +4,40 @@
         <name>API</name>
     </assembly>
     <members>
+        <member name="M:API.Controllers.EmpresaController.ConsultarListaEmpresa">
+            <summary>
+                Consultar lista empresa.
+            </summary>
+            <author>Generador Codigo 1.0.0</author>
+        </member>
+        <member name="M:API.Controllers.EmpresaController.ConsultarEmpresa(API.DTO.Entidades.Empresa.EmpresaDTO)">
+            <summary>
+                Consultar empresa.
+            </summary>
+            <author>Generador Codigo 1.0.0</author>
+            <param name="empresa">DTO empresa</param>
+        </member>
+        <member name="M:API.Controllers.EmpresaController.EditarEmpresa(API.DTO.Entidades.Empresa.EditarEmpresaDTO)">
+            <summary>
+                Editar empresa.
+            </summary>
+            <author>Generador Codigo 1.0.0</author>
+            <param name="empresa">DTO empresa</param>
+        </member>
+        <member name="M:API.Controllers.EmpresaController.EliminarEmpresa(API.DTO.Entidades.Empresa.EmpresaDTO)">
+            <summary>
+                Eliminar empresa.
+            </summary>
+            <author>Generador Codigo 1.0.0</author>
+            <param name="empresa">DTO empresa</param>
+        </member>
+        <member name="M:API.Controllers.EmpresaController.GuardarEmpresa(API.DTO.Entidades.Empresa.GuardarEmpresaDTO)">
+            <summary>
+                Guardar empresa.
+            </summary>
+            <author>Generador Codigo 1.0.0</author>
+            <param name="empresa">DTO empresa</param>
+        </member>
         <member name="M:API.Controllers.PersonaController.ConsultarListaPersona">
             <summary>
                 Consultar lista persona.
