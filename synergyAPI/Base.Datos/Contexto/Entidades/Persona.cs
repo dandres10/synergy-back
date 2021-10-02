@@ -10,6 +10,8 @@ namespace Base.Datos.Contexto.Entidades
         public Persona()
         {
             GrupoRols = new HashSet<GrupoRol>();
+            PersonaEmpresas = new HashSet<PersonaEmpresa>();
+            PersonaSedes = new HashSet<PersonaSede>();
         }
 
         public Guid Id { get; set; }
@@ -25,5 +27,7 @@ namespace Base.Datos.Contexto.Entidades
         public string CelularPersona { get; set; }
 
         public virtual ICollection<GrupoRol> GrupoRols { get; set; }
+        public virtual ICollection<PersonaEmpresa> PersonaEmpresas { get; set; }
+        public virtual ICollection<PersonaSede> PersonaSedes { get; set; }
     }
 }

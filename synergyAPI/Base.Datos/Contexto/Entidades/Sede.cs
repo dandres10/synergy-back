@@ -7,6 +7,11 @@ namespace Base.Datos.Contexto.Entidades
 {
     public partial class Sede
     {
+        public Sede()
+        {
+            PersonaSedes = new HashSet<PersonaSede>();
+        }
+
         public Guid Id { get; set; }
         public string Nombre { get; set; }
         public bool Estado { get; set; }
@@ -20,5 +25,6 @@ namespace Base.Datos.Contexto.Entidades
 
         public virtual Empresa EmpresaNavigation { get; set; }
         public virtual Pai PaisNavigation { get; set; }
+        public virtual ICollection<PersonaSede> PersonaSedes { get; set; }
     }
 }

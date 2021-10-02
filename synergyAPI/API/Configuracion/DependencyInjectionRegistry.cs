@@ -32,9 +32,7 @@
             services.AddScoped<RegistrotarjetaDAL>();
             services.AddScoped<RegistrotarjetaBL>();
 
-            //PersonasedeDI
-            services.AddScoped<PersonasedeDAL>();
-            services.AddScoped<PersonasedeBL>();
+            
 
             #region Configuraciones de servicos para la API
 

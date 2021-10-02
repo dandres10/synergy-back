@@ -9,6 +9,7 @@ namespace Base.Datos.Contexto.Entidades
     {
         public Guid Persona { get; set; }
         public Guid Sede { get; set; }
+        public Guid Id { get; set; }
 
         public virtual Persona PersonaNavigation { get; set; }
         public virtual Sede SedeNavigation { get; set; }

@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
@@ -25,6 +27,8 @@ namespace Base.Datos.Contexto.Entidades
         public virtual DbSet<Rol> Rols { get; set; }
         public virtual DbSet<Sede> Sedes { get; set; }
         public virtual DbSet<Trazabilidad> Trazabilidads { get; set; }
+
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -152,18 +156,18 @@ namespace Base.Datos.Contexto.Entidades
 
             modelBuilder.Entity<PersonaEmpresa>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("PersonaEmpresa");
 
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
                 entity.HasOne(d => d.EmpresaNavigation)
-                    .WithMany()
+                    .WithMany(p => p.PersonaEmpresas)
                     .HasForeignKey(d => d.Empresa)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PersonaEmpresa_Empresa");
 
                 entity.HasOne(d => d.PersonaNavigation)
-                    .WithMany()
+                    .WithMany(p => p.PersonaEmpresas)
                     .HasForeignKey(d => d.Persona)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PersonaEmpresa_Persona");
@@ -171,18 +175,18 @@ namespace Base.Datos.Contexto.Entidades
 
             modelBuilder.Entity<PersonaSede>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("PersonaSede");
 
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
                 entity.HasOne(d => d.PersonaNavigation)
-                    .WithMany()
+                    .WithMany(p => p.PersonaSedes)
                     .HasForeignKey(d => d.Persona)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PersonaSede_Persona");
 
                 entity.HasOne(d => d.SedeNavigation)
-                    .WithMany()
+                    .WithMany(p => p.PersonaSedes)
                     .HasForeignKey(d => d.Sede)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PersonaSede_Sede");
