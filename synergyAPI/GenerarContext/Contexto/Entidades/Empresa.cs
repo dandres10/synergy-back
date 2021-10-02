@@ -9,6 +9,7 @@ namespace Base.Datos.Contexto.Entidades
     {
         public Empresa()
         {
+            RegistroTarjeta = new HashSet<RegistroTarjetum>();
             Sedes = new HashSet<Sede>();
         }
 
@@ -26,6 +27,7 @@ namespace Base.Datos.Contexto.Entidades
         public Guid Pais { get; set; }
 
         public virtual Pai PaisNavigation { get; set; }
+        public virtual ICollection<RegistroTarjetum> RegistroTarjeta { get; set; }
         public virtual ICollection<Sede> Sedes { get; set; }
     }
 }

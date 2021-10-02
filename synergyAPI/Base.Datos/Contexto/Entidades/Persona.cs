@@ -22,6 +22,7 @@ namespace Base.Datos.Contexto.Entidades
         public string Contrasena { get; set; }
         public DateTime FechaIncial { get; set; }
         public DateTime? FechaFinal { get; set; }
+        public string CelularPersona { get; set; }
 
         public virtual ICollection<GrupoRol> GrupoRols { get; set; }
     }

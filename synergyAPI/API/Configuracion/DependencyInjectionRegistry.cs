@@ -20,6 +20,22 @@
             services.AddScoped<EmpresaDAL>();
             services.AddScoped<EmpresaBL>();
 
+            //PaisDI
+            services.AddScoped<PaisDAL>();
+            services.AddScoped<PaisBL>();
+
+            //SedeDI
+            services.AddScoped<SedeDAL>();
+            services.AddScoped<SedeBL>();
+
+            //RegistrotarjetaDI
+            services.AddScoped<RegistrotarjetaDAL>();
+            services.AddScoped<RegistrotarjetaBL>();
+
+            //PersonasedeDI
+            services.AddScoped<PersonasedeDAL>();
+            services.AddScoped<PersonasedeBL>();
+
             #region Configuraciones de servicos para la API
 
             //Configuracion del servicio de Swagger

@@ -29,5 +29,7 @@
         public DateTime FechaIncial { get; set; }
 
         public DateTime? FechaFinal { get; set; }
+
+        public string CelularPersona { get; set; }
     }
 }

@@ -23,9 +23,11 @@
         [Required(ErrorMessage = "El campo Contrasena es requerido.")]
         public string Contrasena { get; set; }
 
-        [Required(ErrorMessage = "El campo FechaIncial es requerido.")]
+       
         public DateTime FechaIncial { get; set; }
 
         public DateTime? FechaFinal { get; set; }
+
+        public string CelularPersona { get; set; }
     }
 }

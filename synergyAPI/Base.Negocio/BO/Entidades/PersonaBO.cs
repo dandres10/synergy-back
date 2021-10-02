@@ -15,5 +15,6 @@
         public DateTime FechaFinal { get; set; }
         public string Correo { get ; set ; }
         public string Contrasena { get ; set ; }
+        public string CelularPersona { get ; set ; }
     }
 }

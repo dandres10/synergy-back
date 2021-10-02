@@ -21,6 +21,7 @@ namespace Base.Datos.Contexto.Entidades
         public virtual DbSet<Persona> Personas { get; set; }
         public virtual DbSet<PersonaEmpresa> PersonaEmpresas { get; set; }
         public virtual DbSet<PersonaSede> PersonaSedes { get; set; }
+        public virtual DbSet<RegistroTarjetum> RegistroTarjeta { get; set; }
         public virtual DbSet<Rol> Rols { get; set; }
         public virtual DbSet<Sede> Sedes { get; set; }
         public virtual DbSet<Trazabilidad> Trazabilidads { get; set; }
@@ -120,6 +121,10 @@ namespace Base.Datos.Contexto.Entidades
 
                 entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
 
+                entity.Property(e => e.CelularPersona)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
                 entity.Property(e => e.Contrasena)
                     .IsRequired()
                     .HasMaxLength(50);
@@ -181,6 +186,47 @@ namespace Base.Datos.Contexto.Entidades
                     .HasForeignKey(d => d.Sede)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PersonaSede_Sede");
+            });
+
+            modelBuilder.Entity<RegistroTarjetum>(entity =>
+            {
+                entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
+
+                entity.Property(e => e.AnoVigenciaTarjeta)
+                    .IsRequired()
+                    .HasMaxLength(4);
+
+                entity.Property(e => e.CodigoCvv)
+                    .IsRequired()
+                    .HasColumnName("CodigoCVV");
+
+                entity.Property(e => e.FechaFinal).HasColumnType("datetime");
+
+                entity.Property(e => e.FechaInicio)
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.MesVigenciaTarjeta)
+                    .IsRequired()
+                    .HasMaxLength(2);
+
+                entity.Property(e => e.NombreTitular)
+                    .IsRequired()
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.NumeroDocumento)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.NumeroTarjeta)
+                    .IsRequired()
+                    .HasMaxLength(100);
+
+                entity.HasOne(d => d.EmpresaNavigation)
+                    .WithMany(p => p.RegistroTarjeta)
+                    .HasForeignKey(d => d.Empresa)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_RegistroTarjeta_Empresa");
             });
 
             modelBuilder.Entity<Rol>(entity =>
