@@ -12,6 +12,7 @@
     using Base.Transversal.Clases;
     using Base.Transversal.Mensajes;
     using Microsoft.EntityFrameworkCore;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -70,9 +71,10 @@
                 => await EjecutarTransaccionAsync(async () =>
                 {
                     Persona personaDO = MapPersona(persona);
+                    personaDO.Id = Guid.NewGuid();
                     context.Personas.Add(personaDO);
                     await context.SaveChangesAsync();
-                    return CrearRespuesta<IPersonaDTO>.Exitosa(null, MensajesBaseEspanol.CreateData);
+                    return CrearRespuesta<IPersonaDTO>.Exitosa(MapIPersonaDTO(personaDO), MensajesBaseEspanol.CreateData);
                 });
 
         public async Task<Respuesta<IPersonaInfoDTO>> AutenticarPersona(IPersonaLoginDTO persona)

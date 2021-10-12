@@ -95,7 +95,7 @@
         /// <author>Generador Codigo 1.0.0</author>
         /// <param name="persona">DTO persona</param>
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         [Route(nameof(PersonaController.GuardarPersona))]
         public async Task<Respuesta<GuardarPersonaDTO>> GuardarPersona([FromBody] GuardarPersonaDTO persona)
         {

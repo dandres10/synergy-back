@@ -71,7 +71,7 @@ namespace Base.Datos.DAL
                        empresaDO.Id = Guid.NewGuid();
                        context.Empresas.Add(empresaDO);
                        await context.SaveChangesAsync();
-                       return CrearRespuesta<IEmpresaDTO>.Exitosa(null, MensajesBaseEspanol.CreateData);
+                       return CrearRespuesta<IEmpresaDTO>.Exitosa(MapIEmpresaDTO(empresaDO), MensajesBaseEspanol.CreateData);
                    });
 
         #region Metodos Privados
