@@ -17,6 +17,7 @@
             }
             catch (Exception error)
             {
+                //TOdO: arreglar este retorno toca tipar la clase para que se devuelva lo esperado 
                 return CrearRespuesta<dynamic>.Fallida(error.Message.ToString());
             }
         }
