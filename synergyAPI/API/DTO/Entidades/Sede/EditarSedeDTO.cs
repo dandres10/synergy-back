@@ -30,5 +30,13 @@ namespace API.DTO.Entidades.Sede
 
         [Required(ErrorMessage = "El campo Pais es requerido.")]
         public Guid Pais { get; set; }
+
+        [Required(ErrorMessage = "El campo Telefono 1 es requerido.")]
+        public string Telefono1 { get; set; }
+
+        public string Telefono2 { get; set; }
+
+        [Required(ErrorMessage = "El campo Dirección es requerido.")]
+        public string Direccion { get; set; }
     }
 }

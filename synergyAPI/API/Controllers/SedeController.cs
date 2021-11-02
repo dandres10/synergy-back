@@ -10,6 +10,7 @@ namespace API.Controllers
     using Base.Transversal.Clases;
     using Base.Transversal.Mensajes;
     using Microsoft.AspNetCore.Mvc;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -37,7 +38,9 @@ namespace API.Controllers
         [HttpGet]
         [Route(nameof(SedeController.ConsultarListaSede))]
         public async Task<Respuesta<List<SedeDTO>>> ConsultarListaSede()
-           => MapRespuestaListSedeDTO(await sedeBL.ConsultarListaSede());
+        {
+            return MapRespuestaListSedeDTO(await sedeBL.ConsultarListaSede(Guid.Parse(HttpContext.Request.Headers[Empresa].ToString())));
+        }
 
         /// <summary>
         ///     Consultar sede.

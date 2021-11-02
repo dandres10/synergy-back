@@ -28,7 +28,7 @@ namespace Base.Datos.DAL
         }
 
         public async Task<Respuesta<List<IEmpresaDTO>>> ConsultarListaEmpresa()
-                => await EjecutarTransaccionAsync(async () =>
+                => await EjecutarTransaccionAsync<List<IEmpresaDTO>>(async () =>
                    {
                        List<Empresa> empresa = await context.Empresas.AsNoTracking().ToListAsync();
                        if (IsNull(empresa))
@@ -37,7 +37,7 @@ namespace Base.Datos.DAL
                    });
 
         public async Task<Respuesta<IEmpresaDTO>> ConsultarEmpresa(IEmpresaDTO empresa)
-                => await EjecutarTransaccionAsync(async () =>
+                => await EjecutarTransaccionAsync<IEmpresaDTO>(async () =>
                    {
                        Empresa empresaDO = MapEmpresa(empresa);
                        empresaDO = await context.Empresas.AsNoTracking().FirstOrDefaultAsync(x => x.Id.Equals(empresaDO.Id));
@@ -47,7 +47,7 @@ namespace Base.Datos.DAL
                    });
 
         public async Task<Respuesta<IEmpresaDTO>> EditarEmpresa(IEmpresaDTO empresa)
-                => await EjecutarTransaccionAsync(async () => 
+                => await EjecutarTransaccionAsync<IEmpresaDTO>(async () => 
                    {
                        Empresa empresaDO = MapEmpresa(empresa);
                        context.Entry(empresaDO).State = EntityState.Modified;
@@ -56,7 +56,7 @@ namespace Base.Datos.DAL
                    });
 
         public async Task<Respuesta<IEmpresaDTO>> EliminarEmpresa(IEmpresaDTO empresa)
-                => await EjecutarTransaccionAsync(async () =>
+                => await EjecutarTransaccionAsync<IEmpresaDTO>(async () =>
                    {
                        Empresa empresaDO = MapEmpresa(empresa);
                        context.Empresas.Remove(empresaDO);
@@ -65,7 +65,7 @@ namespace Base.Datos.DAL
                    });
 
         public async Task<Respuesta<IEmpresaDTO>> GuardarEmpresa(IEmpresaDTO empresa)
-                => await EjecutarTransaccionAsync(async () =>
+                => await EjecutarTransaccionAsync<IEmpresaDTO>(async () =>
                    {
                        Empresa empresaDO = MapEmpresa(empresa);
                        empresaDO.Id = Guid.NewGuid();

@@ -31,7 +31,7 @@
         }
 
         public async Task<Respuesta<List<IPersonaDTO>>> ConsultarListaPersona()
-                => await EjecutarTransaccionAsync(async () =>
+                => await EjecutarTransaccionAsync<List<IPersonaDTO>>(async () =>
                 {
                     List<Persona> persona = await context.Personas.AsNoTracking().ToListAsync();
                     if (IsNull(persona))
@@ -40,7 +40,7 @@
                 });
 
         public async Task<Respuesta<IPersonaDTO>> ConsultarPersona(IPersonaDTO persona)
-                => await EjecutarTransaccionAsync(async () =>
+                => await EjecutarTransaccionAsync<IPersonaDTO>(async () =>
                 {
                     Persona personaDO = MapPersona(persona);
                     personaDO = await context.Personas.AsNoTracking().FirstOrDefaultAsync(x => x.Id.Equals(personaDO.Id));
@@ -50,7 +50,7 @@
                 });
 
         public async Task<Respuesta<IPersonaDTO>> EditarPersona(IPersonaDTO persona)
-                => await EjecutarTransaccionAsync(async () =>
+                => await EjecutarTransaccionAsync<IPersonaDTO>(async () =>
                 {
                     Persona personaDO = MapPersona(persona);
                     context.Entry(personaDO).State = EntityState.Modified;
@@ -59,7 +59,7 @@
                 });
 
         public async Task<Respuesta<IPersonaDTO>> EliminarPersona(IPersonaDTO persona)
-                => await EjecutarTransaccionAsync(async () =>
+                => await EjecutarTransaccionAsync<IPersonaDTO>(async () =>
                 {
                     Persona personaDO = MapPersona(persona);
                     context.Personas.Remove(personaDO);
@@ -68,7 +68,7 @@
                 });
 
         public async Task<Respuesta<IPersonaDTO>> GuardarPersona(IPersonaDTO persona)
-                => await EjecutarTransaccionAsync(async () =>
+                => await EjecutarTransaccionAsync<IPersonaDTO>(async () =>
                 {
                     Persona personaDO = MapPersona(persona);
                     personaDO.Id = Guid.NewGuid();
@@ -78,11 +78,13 @@
                 });
 
         public async Task<Respuesta<IPersonaInfoDTO>> AutenticarPersona(IPersonaLoginDTO persona)
-                => await EjecutarTransaccionAsync(async () =>
+                => await EjecutarTransaccionAsync<IPersonaInfoDTO>(async () =>
                 {
                     PersonaLoginDO personaLoginDO = mapper.Map<IPersonaLoginDTO, PersonaLoginDO>(persona);
 
-                    PersonaInfoDO personaInfoDO = await context.Personas.Include(i => i.GrupoRols)
+                    PersonaInfoDO personaInfoDO = await context.Personas
+                                               .Include(i => i.GrupoRols)
+                                               .Include(i => i.PersonaEmpresas)
                                                .Where(w => w.Correo.ToLower().Equals(personaLoginDO.Correo.ToLower()) &&
                                                            w.Contrasena.Equals(personaLoginDO.Contrasena) &&
                                                            w.Estado == true)
@@ -96,7 +98,8 @@
                                                                       .Select(gs => gs.RolNavigation.Nombre).ToList(),
                                                    CodigoRoles = s.GrupoRols.Where(w => w.RolNavigation.Estado == true)
                                                                       .Select(gs => gs.RolNavigation.Codigo.ToString()).ToList(),
-                                                   Estado = s.Estado ?? false
+                                                   Estado = s.Estado ?? false,
+                                                   Empresa = s.PersonaEmpresas.Select(s => s.Empresa).ToList()
                                                }).FirstOrDefaultAsync();
 
                     if (IsNull(personaInfoDO))

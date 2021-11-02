@@ -15,6 +15,7 @@
         public List<string> CodigoRoles { get; set; }
         public string Token { get; set; }
         public bool Estado { get ; set ; }
+        public List<Guid> Empresa { get ; set ; }
     }
 
     public class PersonaLoginDTO : IPersonaLoginDTO
@@ -32,5 +33,7 @@
         public string Nombre { get ; set ; }
         public bool Estado { get ; set ; }
         public string Correo { get ; set ; }
+
+        public List<Guid> Empresa { get; set; }
     }
 }

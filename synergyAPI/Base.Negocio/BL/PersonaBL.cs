@@ -36,7 +36,7 @@
         }
 
         public async Task<Respuesta<IPersonaLoginTokenDTO>> AutenticarPersona(IPersonaLoginDTO persona)
-            => await EjecutarTransaccionAsync(async () =>
+            => await EjecutarTransaccionAsync<IPersonaLoginTokenDTO>(async () =>
             {
                 Respuesta<PersonaInfoBO> personaInfoBO =
                         mapper.Map<Respuesta<IPersonaInfoDTO>, Respuesta<PersonaInfoBO>>(await personaDAL.AutenticarPersona(persona));
@@ -46,11 +46,12 @@
 
                 string TokenGenerado = GenerarTokenJWT(personaInfoBO.Resultado);
 
-                PersonaLoginTokenBO response = new PersonaLoginTokenBO
+                PersonaLoginTokenBO response = new PersonaLoginTokenBO 
                 {
                     Token = TokenGenerado,
                     Correo = personaInfoBO.Resultado.Correo,
                     Estado = personaInfoBO.Resultado.Estado,
+                    Empresa = personaInfoBO.Resultado.Empresa,
                     Nombre = string.Format("{0} {1}", personaInfoBO.Resultado.Nombres, personaInfoBO.Resultado.Apellidos)
                 };
 
@@ -103,13 +104,13 @@
         }
 
         public async Task<Respuesta<List<IPersonaDTO>>> ConsultarListaPersona()
-             => await EjecutarTransaccionAsync(async () => await personaDAL.ConsultarListaPersona());
+             => await EjecutarTransaccionAsync<List<IPersonaDTO>>(async () => await personaDAL.ConsultarListaPersona());
 
         public async Task<Respuesta<IPersonaDTO>> ConsultarPersona(IPersonaDTO persona)
-            => await EjecutarTransaccionAsync(async () => await personaDAL.ConsultarPersona(persona));
+            => await EjecutarTransaccionAsync<IPersonaDTO>(async () => await personaDAL.ConsultarPersona(persona));
 
         public async Task<Respuesta<IPersonaDTO>> EditarPersona(IPersonaDTO persona)
-            => await EjecutarTransaccionAsync(async () =>
+            => await EjecutarTransaccionAsync<IPersonaDTO>(async () =>
             {
                 Respuesta<IPersonaDTO> respuestaDAL = await personaDAL.ConsultarPersona(persona);
                 if (!respuestaDAL.EsValido) return respuestaDAL;
@@ -117,7 +118,7 @@
             });
 
         public async Task<Respuesta<IPersonaDTO>> EliminarPersona(IPersonaDTO persona)
-            => await EjecutarTransaccionAsync(async () =>
+            => await EjecutarTransaccionAsync<IPersonaDTO>(async () =>
             {
                 Respuesta<IPersonaDTO> respuestaDAL = await personaDAL.ConsultarPersona(persona);
                 if (!respuestaDAL.EsValido) return respuestaDAL;
@@ -125,7 +126,7 @@
             });
 
         public async Task<Respuesta<IPersonaDTO>> GuardarPersona(IPersonaDTO persona)
-            => await EjecutarTransaccionAsync(async () => await personaDAL.GuardarPersona(persona));
+            => await EjecutarTransaccionAsync<IPersonaDTO>(async () => await personaDAL.GuardarPersona(persona));
 
         #endregion Metodos privados
     }

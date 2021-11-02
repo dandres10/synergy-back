@@ -11,6 +11,7 @@ namespace API.DTO.Entidades.Personaempresa
     {
         public PersonaempresaMapperProfiles()
         {
+            
             CreateMap<PersonaEmpresa, IPersonaempresaDTO>().ReverseMap();
             CreateMap<PersonaEmpresaBO, IPersonaempresaDTO>().ReverseMap();
             CreateMap<PersonaempresaDTO, IPersonaempresaDTO>().ReverseMap();
@@ -19,8 +20,8 @@ namespace API.DTO.Entidades.Personaempresa
             CreateMap<Respuesta<PersonaempresaDTO>, Respuesta<IPersonaempresaDTO>>().ReverseMap();
             CreateMap<Respuesta<EditarPersonaempresaDTO>, Respuesta<IPersonaempresaDTO>>().ReverseMap();
             CreateMap<Respuesta<GuardarPersonaempresaDTO>, Respuesta<IPersonaempresaDTO>>().ReverseMap();
-            CreateMap<Respuesta<List<PersonaempresaDTO>>, Respuesta<List<IPersonaempresaDTO>>>().ReverseMap();
             CreateMap<Respuesta<List<PersonaEmpresa>>, Respuesta<List<IPersonaempresaDTO>>>().ReverseMap();
+            CreateMap<Respuesta<List<PersonaempresaDTO>>, Respuesta<List<IPersonaempresaDTO>>>().ReverseMap();
         }
     }
 }

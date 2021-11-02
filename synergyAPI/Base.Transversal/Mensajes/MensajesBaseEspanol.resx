@@ -132,6 +132,9 @@
   <data name="SuccessfulConsultation" xml:space="preserve">
     <value>Consulta exitosa.</value>
   </data>
+  <data name="TheCompanyIdentifierIsRequired" xml:space="preserve">
+    <value>El identificador de la empresa es obligatorio.</value>
+  </data>
   <data name="UnidentifiedError" xml:space="preserve">
     <value>Error no identificado.</value>
   </data>

@@ -9,44 +9,44 @@ namespace Base.Negocio.BL
     using Base.Transversal.Clases;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    
+
     public class EmpresaBL : AccesoComunBL, IEmpresaAccion
     {
         private readonly EmpresaDAL empresaDAL;
         private readonly IMapper mapper;
         private readonly Context context;
-    
+
         public EmpresaBL(EmpresaDAL empresaDAL, IMapper mapper, Context context)
         {
             this.mapper = mapper;
             this.context = context;
             this.empresaDAL = empresaDAL;
         }
-   
-       public async Task<Respuesta<List<IEmpresaDTO>>> ConsultarListaEmpresa()
-            => await EjecutarTransaccionAsync(async () => await empresaDAL.ConsultarListaEmpresa());
-   
+
+        public async Task<Respuesta<List<IEmpresaDTO>>> ConsultarListaEmpresa()
+             => await EjecutarTransaccionAsync<List<IEmpresaDTO>>(async () => await empresaDAL.ConsultarListaEmpresa());
+
         public async Task<Respuesta<IEmpresaDTO>> ConsultarEmpresa(IEmpresaDTO empresa)
-            => await EjecutarTransaccionAsync(async () => await empresaDAL.ConsultarEmpresa(empresa));
-    
+            => await EjecutarTransaccionAsync<IEmpresaDTO>(async () => await empresaDAL.ConsultarEmpresa(empresa));
+
         public async Task<Respuesta<IEmpresaDTO>> EditarEmpresa(IEmpresaDTO empresa)
-            => await EjecutarTransaccionAsync(async () =>
+            => await EjecutarTransaccionAsync<IEmpresaDTO>(async () =>
             {
                 Respuesta<IEmpresaDTO> respuestaDAL = await empresaDAL.ConsultarEmpresa(empresa);
                 empresa.FechaInicial = respuestaDAL.Resultado.FechaInicial;
                 if (!respuestaDAL.EsValido) return respuestaDAL;
                 return await empresaDAL.EditarEmpresa(empresa);
             });
-      
+
         public async Task<Respuesta<IEmpresaDTO>> EliminarEmpresa(IEmpresaDTO empresa)
-            => await EjecutarTransaccionAsync(async () =>
+            => await EjecutarTransaccionAsync<IEmpresaDTO>(async () =>
              {
                  Respuesta<IEmpresaDTO> respuestaDAL = await empresaDAL.ConsultarEmpresa(empresa);
                  if (!respuestaDAL.EsValido) return respuestaDAL;
                  return await empresaDAL.EliminarEmpresa(empresa);
              });
-       
+
         public async Task<Respuesta<IEmpresaDTO>> GuardarEmpresa(IEmpresaDTO empresa)
-            => await EjecutarTransaccionAsync(async () => await empresaDAL.GuardarEmpresa(empresa));
+            => await EjecutarTransaccionAsync<IEmpresaDTO>(async () => await empresaDAL.GuardarEmpresa(empresa));
     }
 }

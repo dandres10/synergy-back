@@ -14,6 +14,7 @@
         public List<string> CodigoRoles { get; set; }
         public string Token { get; set; }
         public bool Estado { get ; set ; }
+        public List<Guid> Empresa { get ; set ; }
     }
 
 

@@ -28,7 +28,7 @@ namespace Base.Datos.DAL
         }
 
         public async Task<Respuesta<List<IRegistrotarjetaDTO>>> ConsultarListaRegistrotarjeta()
-                => await EjecutarTransaccionAsync(async () =>
+                => await EjecutarTransaccionAsync<List<IRegistrotarjetaDTO>>(async () =>
                    {
                        List<RegistroTarjetum> registrotarjeta = await context.RegistroTarjeta.AsNoTracking().ToListAsync();
                        if (IsNull(registrotarjeta))
@@ -37,7 +37,7 @@ namespace Base.Datos.DAL
                    });
 
         public async Task<Respuesta<IRegistrotarjetaDTO>> ConsultarRegistrotarjeta(IRegistrotarjetaDTO registrotarjeta)
-                => await EjecutarTransaccionAsync(async () =>
+                => await EjecutarTransaccionAsync<IRegistrotarjetaDTO>(async () =>
                    {
                        RegistroTarjetum registrotarjetaDO = MapRegistrotarjeta(registrotarjeta);
                        registrotarjetaDO = await context.RegistroTarjeta.AsNoTracking().FirstOrDefaultAsync(x => x.Id.Equals(registrotarjetaDO.Id));
@@ -47,7 +47,7 @@ namespace Base.Datos.DAL
                    });
 
         public async Task<Respuesta<IRegistrotarjetaDTO>> EditarRegistrotarjeta(IRegistrotarjetaDTO registrotarjeta)
-                => await EjecutarTransaccionAsync(async () =>
+                => await EjecutarTransaccionAsync<IRegistrotarjetaDTO>(async () =>
                    {
                        RegistroTarjetum registrotarjetaDO = MapRegistrotarjeta(registrotarjeta);
                        context.Entry(registrotarjetaDO).State = EntityState.Modified;
@@ -56,7 +56,7 @@ namespace Base.Datos.DAL
                    });
 
         public async Task<Respuesta<IRegistrotarjetaDTO>> EliminarRegistrotarjeta(IRegistrotarjetaDTO registrotarjeta)
-                => await EjecutarTransaccionAsync(async () =>
+                => await EjecutarTransaccionAsync<IRegistrotarjetaDTO>(async () =>
                    {
                        RegistroTarjetum registrotarjetaDO = MapRegistrotarjeta(registrotarjeta);
                        context.RegistroTarjeta.Remove(registrotarjetaDO);
@@ -65,7 +65,7 @@ namespace Base.Datos.DAL
                    });
 
         public async Task<Respuesta<IRegistrotarjetaDTO>> GuardarRegistrotarjeta(IRegistrotarjetaDTO registrotarjeta)
-                => await EjecutarTransaccionAsync(async () =>
+                => await EjecutarTransaccionAsync<IRegistrotarjetaDTO>(async () =>
                    {
                        RegistroTarjetum registrotarjetaDO = MapRegistrotarjeta(registrotarjeta);
                        registrotarjetaDO.FechaInicio = DateTime.Now;

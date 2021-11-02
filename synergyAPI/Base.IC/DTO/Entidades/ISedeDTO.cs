@@ -1,6 +1,7 @@
 namespace Base.IC.DTO.Entidades
 {
     using System;
+
     public interface ISedeDTO
     {
         public Guid? Id { get; set; }
@@ -13,5 +14,8 @@ namespace Base.IC.DTO.Entidades
         public DateTime? FechaFinal { get; set; }
         public string CodigoPostal { get; set; }
         public Guid Pais { get; set; }
+        public string Telefono1 { get; set; }
+        public string Telefono2 { get; set; }
+        public string Direccion { get; set; }
     }
 }

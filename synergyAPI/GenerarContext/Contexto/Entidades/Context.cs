@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace Base.Datos.Contexto.Entidades
+namespace GenerarContext.Contexto.Entidades
 {
     public partial class Context : DbContext
     {
@@ -262,6 +262,10 @@ namespace Base.Datos.Contexto.Entidades
                     .IsRequired()
                     .HasMaxLength(50);
 
+                entity.Property(e => e.Direccion)
+                    .IsRequired()
+                    .HasMaxLength(100);
+
                 entity.Property(e => e.FechaFinal).HasColumnType("datetime");
 
                 entity.Property(e => e.FechaInicial)
@@ -275,6 +279,12 @@ namespace Base.Datos.Contexto.Entidades
                 entity.Property(e => e.Sigla)
                     .IsRequired()
                     .HasMaxLength(2);
+
+                entity.Property(e => e.Telefono1)
+                    .IsRequired()
+                    .HasMaxLength(20);
+
+                entity.Property(e => e.Telefono2).HasMaxLength(20);
 
                 entity.HasOne(d => d.EmpresaNavigation)
                     .WithMany(p => p.Sedes)

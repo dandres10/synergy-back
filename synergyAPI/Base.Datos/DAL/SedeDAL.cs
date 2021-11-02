@@ -8,10 +8,12 @@ namespace Base.Datos.DAL
     using Base.IC.Acciones.Entidades;
     using Base.IC.DTO.Entidades;
     using Base.Transversal.Clases;
+    using Base.Transversal.Enumeraciones;
     using Base.Transversal.Mensajes;
     using Microsoft.EntityFrameworkCore;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     #endregion Importaciones
@@ -27,17 +29,19 @@ namespace Base.Datos.DAL
             this.mapper = mapper;
         }
 
-        public async Task<Respuesta<List<ISedeDTO>>> ConsultarListaSede()
-                => await EjecutarTransaccionAsync(async () =>
+        public async Task<Respuesta<List<ISedeDTO>>> ConsultarListaSede(Guid Empresa)
+                => await EjecutarTransaccionAsync<List<ISedeDTO>>(async () =>
                    {
-                       List<Sede> sede = await context.Sedes.AsNoTracking().ToListAsync();
-                       if (IsNull(sede))
+                       if (Empresa == Guid.Empty)
+                           return CrearRespuesta<List<ISedeDTO>>.FallidaLista(MensajesBaseEspanol.TheCompanyIdentifierIsRequired, TipoMensaje.MensajeEstatico);
+                       List<Sede> sede = await context.Sedes.Where(w => w.Empresa == Empresa).AsNoTracking().ToListAsync();
+                       if (!sede.Any())
                            return CrearRespuesta<ISedeDTO>.AdvertenciaLista(null, MensajesBaseEspanol.NoData);
                        return CrearRespuesta<ISedeDTO>.ExitosaLista(MapListISedeDTO(sede));
                    });
 
         public async Task<Respuesta<ISedeDTO>> ConsultarSede(ISedeDTO sede)
-                => await EjecutarTransaccionAsync(async () =>
+                => await EjecutarTransaccionAsync<ISedeDTO>(async () =>
                    {
                        Sede sedeDO = MapSede(sede);
                        sedeDO = await context.Sedes.AsNoTracking().FirstOrDefaultAsync(x => x.Id.Equals(sedeDO.Id));
@@ -47,7 +51,7 @@ namespace Base.Datos.DAL
                    });
 
         public async Task<Respuesta<ISedeDTO>> EditarSede(ISedeDTO sede)
-                => await EjecutarTransaccionAsync(async () =>
+                => await EjecutarTransaccionAsync<ISedeDTO>(async () =>
                    {
                        Sede sedeDO = MapSede(sede);
                        context.Sedes.Update(sedeDO);
@@ -56,7 +60,7 @@ namespace Base.Datos.DAL
                    });
 
         public async Task<Respuesta<ISedeDTO>> EliminarSede(ISedeDTO sede)
-                => await EjecutarTransaccionAsync(async () =>
+                => await EjecutarTransaccionAsync<ISedeDTO>(async () =>
                    {
                        Sede sedeDO = MapSede(sede);
                        context.Sedes.Remove(sedeDO);
@@ -65,7 +69,7 @@ namespace Base.Datos.DAL
                    });
 
         public async Task<Respuesta<ISedeDTO>> GuardarSede(ISedeDTO sede)
-                => await EjecutarTransaccionAsync(async () =>
+                => await EjecutarTransaccionAsync<ISedeDTO>(async () =>
                    {
                        Sede sedeDO = MapSede(sede);
                        sedeDO.FechaInicial = DateTime.Now;

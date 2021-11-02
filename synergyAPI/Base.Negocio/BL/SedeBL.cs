@@ -24,14 +24,14 @@ namespace Base.Negocio.BL
             this.sedeDAL = sedeDAL;
         }
 
-        public async Task<Respuesta<List<ISedeDTO>>> ConsultarListaSede()
-             => await EjecutarTransaccionAsync(async () => await sedeDAL.ConsultarListaSede());
+        public async Task<Respuesta<List<ISedeDTO>>> ConsultarListaSede(Guid Empresa)
+             => await EjecutarTransaccionAsync<List<ISedeDTO>>(async () => await sedeDAL.ConsultarListaSede(Empresa));
 
         public async Task<Respuesta<ISedeDTO>> ConsultarSede(ISedeDTO sede)
-            => await EjecutarTransaccionAsync(async () => await sedeDAL.ConsultarSede(sede));
+            => await EjecutarTransaccionAsync<ISedeDTO>(async () => await sedeDAL.ConsultarSede(sede));
 
         public async Task<Respuesta<ISedeDTO>> EditarSede(ISedeDTO sede)
-            => await EjecutarTransaccionAsync(async () =>
+            => await EjecutarTransaccionAsync<ISedeDTO>(async () =>
             {
                 Respuesta<ISedeDTO> respuestaDAL = await sedeDAL.ConsultarSede(sede);
                 if (!respuestaDAL.EsValido) return respuestaDAL;
@@ -39,9 +39,8 @@ namespace Base.Negocio.BL
                 return await sedeDAL.EditarSede(sede);
             });
 
-
         public async Task<Respuesta<ISedeDTO>> EliminarSede(ISedeDTO sede)
-            => await EjecutarTransaccionAsync(async () =>
+            => await EjecutarTransaccionAsync<ISedeDTO>(async () =>
              {
                  Respuesta<ISedeDTO> respuestaDAL = await sedeDAL.ConsultarSede(sede);
                  if (!respuestaDAL.EsValido) return respuestaDAL;
@@ -49,6 +48,6 @@ namespace Base.Negocio.BL
              });
 
         public async Task<Respuesta<ISedeDTO>> GuardarSede(ISedeDTO sede)
-            => await EjecutarTransaccionAsync(async () => await sedeDAL.GuardarSede(sede));
+            => await EjecutarTransaccionAsync<ISedeDTO>(async () => await sedeDAL.GuardarSede(sede));
     }
 }

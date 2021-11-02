@@ -24,13 +24,13 @@ namespace Base.Negocio.BL
         }
 
         public async Task<Respuesta<List<IRegistrotarjetaDTO>>> ConsultarListaRegistrotarjeta()
-             => await EjecutarTransaccionAsync(async () => await registrotarjetaDAL.ConsultarListaRegistrotarjeta());
+             => await EjecutarTransaccionAsync<List<IRegistrotarjetaDTO>>(async () => await registrotarjetaDAL.ConsultarListaRegistrotarjeta());
 
         public async Task<Respuesta<IRegistrotarjetaDTO>> ConsultarRegistrotarjeta(IRegistrotarjetaDTO registrotarjeta)
-            => await EjecutarTransaccionAsync(async () => await registrotarjetaDAL.ConsultarRegistrotarjeta(registrotarjeta));
+            => await EjecutarTransaccionAsync<IRegistrotarjetaDTO>(async () => await registrotarjetaDAL.ConsultarRegistrotarjeta(registrotarjeta));
 
         public async Task<Respuesta<IRegistrotarjetaDTO>> EditarRegistrotarjeta(IRegistrotarjetaDTO registrotarjeta)
-            => await EjecutarTransaccionAsync(async () =>
+            => await EjecutarTransaccionAsync<IRegistrotarjetaDTO>(async () =>
             {
                 Respuesta<IRegistrotarjetaDTO> respuestaDAL = await registrotarjetaDAL.ConsultarRegistrotarjeta(registrotarjeta);
                 if (!respuestaDAL.EsValido) return respuestaDAL;
@@ -39,7 +39,7 @@ namespace Base.Negocio.BL
             });
 
         public async Task<Respuesta<IRegistrotarjetaDTO>> EliminarRegistrotarjeta(IRegistrotarjetaDTO registrotarjeta)
-            => await EjecutarTransaccionAsync(async () =>
+            => await EjecutarTransaccionAsync<IRegistrotarjetaDTO>(async () =>
              {
                  Respuesta<IRegistrotarjetaDTO> respuestaDAL = await registrotarjetaDAL.ConsultarRegistrotarjeta(registrotarjeta);
                  if (!respuestaDAL.EsValido) return respuestaDAL;
@@ -47,6 +47,6 @@ namespace Base.Negocio.BL
              });
 
         public async Task<Respuesta<IRegistrotarjetaDTO>> GuardarRegistrotarjeta(IRegistrotarjetaDTO registrotarjeta)
-            => await EjecutarTransaccionAsync(async () => await registrotarjetaDAL.GuardarRegistrotarjeta(registrotarjeta));
+            => await EjecutarTransaccionAsync<IRegistrotarjetaDTO>(async () => await registrotarjetaDAL.GuardarRegistrotarjeta(registrotarjeta));
     }
 }

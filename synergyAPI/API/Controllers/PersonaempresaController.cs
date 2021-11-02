@@ -96,7 +96,7 @@ namespace API.Controllers
         [HttpPost]
         [Route(nameof(PersonaEmpresaController.GuardarPersonaempresa))]
        
-        public async Task<Respuesta<GuardarPersonaempresaDTO>> GuardarPersonaempresa([FromBody] GuardarPersonaempresaDTO personaempresa)
+        public async Task<Respuesta<GuardarPersonaempresaDTO>>  GuardarPersonaempresa([FromBody] GuardarPersonaempresaDTO personaempresa)
         {
             if (EntidadValida(personaempresa))
                 return CrearRespuesta<GuardarPersonaempresaDTO>.Fallida(MensajeError());

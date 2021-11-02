@@ -28,7 +28,7 @@ namespace Base.Datos.DAL
         }
 
         public async Task<Respuesta<List<IPaisDTO>>> ConsultarListaPais()
-                => await EjecutarTransaccionAsync(async () =>
+                => await EjecutarTransaccionAsync<List<IPaisDTO>>(async () =>
                    {
                        List<Pai> pais = await context.Pais.AsNoTracking().ToListAsync();
                        if (IsNull(pais))
@@ -37,7 +37,7 @@ namespace Base.Datos.DAL
                    });
 
         public async Task<Respuesta<IPaisDTO>> ConsultarPais(IPaisDTO pais)
-                => await EjecutarTransaccionAsync(async () =>
+                => await EjecutarTransaccionAsync<IPaisDTO>(async () =>
                    {
                        Pai paisDO = MapPais(pais);
                        paisDO = await context.Pais.AsNoTracking().FirstOrDefaultAsync(x => x.Id.Equals(paisDO.Id));
@@ -47,7 +47,7 @@ namespace Base.Datos.DAL
                    });
 
         public async Task<Respuesta<IPaisDTO>> EditarPais(IPaisDTO pais)
-                => await EjecutarTransaccionAsync(async () =>
+                => await EjecutarTransaccionAsync<IPaisDTO>(async () =>
                    {
                        Pai paisDO = MapPais(pais);
                        context.Pais.Update(paisDO).Property(p => p.FechaInicio).IsModified = false;
@@ -56,7 +56,7 @@ namespace Base.Datos.DAL
                    });
 
         public async Task<Respuesta<IPaisDTO>> EliminarPais(IPaisDTO pais)
-                => await EjecutarTransaccionAsync(async () =>
+                => await EjecutarTransaccionAsync<IPaisDTO>(async () =>
                    {
                        Pai paisDO = MapPais(pais);
                        context.Pais.Remove(paisDO);
@@ -65,7 +65,7 @@ namespace Base.Datos.DAL
                    });
 
         public async Task<Respuesta<IPaisDTO>> GuardarPais(IPaisDTO pais)
-                => await EjecutarTransaccionAsync(async () =>
+                => await EjecutarTransaccionAsync<IPaisDTO>(async () =>
                    {
                        Pai paisDO = MapPais(pais);
                        paisDO.Id = Guid.NewGuid();

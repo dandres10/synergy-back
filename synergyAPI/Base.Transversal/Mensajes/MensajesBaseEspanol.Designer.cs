@@ -106,6 +106,15 @@ namespace Base.Transversal.Mensajes {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a El identificador de la empresa es obligatorio..
+        /// </summary>
+        public static string TheCompanyIdentifierIsRequired {
+            get {
+                return ResourceManager.GetString("TheCompanyIdentifierIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Error no identificado..
         /// </summary>
         public static string UnidentifiedError {

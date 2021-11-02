@@ -28,7 +28,7 @@ namespace Base.Datos.DAL
         }
 
         public async Task<Respuesta<List<IPersonaempresaDTO>>> ConsultarListaPersonaempresa()
-                => await EjecutarTransaccionAsync(async () =>
+                => await EjecutarTransaccionAsync<List<IPersonaempresaDTO>>(async () =>
                    {
                        List<PersonaEmpresa> personaempresa = await context.PersonaEmpresas.AsNoTracking().ToListAsync();
                        if (IsNull(personaempresa))
@@ -37,7 +37,7 @@ namespace Base.Datos.DAL
                    });
 
         public async Task<Respuesta<IPersonaempresaDTO>> ConsultarPersonaempresa(IPersonaempresaDTO personaempresa)
-                => await EjecutarTransaccionAsync(async () =>
+                => await EjecutarTransaccionAsync<IPersonaempresaDTO>(async () =>
                    {
                        PersonaEmpresa personaempresaDO = MapPersonaempresa(personaempresa);
                        personaempresaDO = await context.PersonaEmpresas.AsNoTracking().FirstOrDefaultAsync(x => x.Id.Equals(personaempresaDO.Id));
@@ -47,7 +47,7 @@ namespace Base.Datos.DAL
                    });
 
         public async Task<Respuesta<IPersonaempresaDTO>> EditarPersonaempresa(IPersonaempresaDTO personaempresa)
-                => await EjecutarTransaccionAsync(async () =>
+                => await EjecutarTransaccionAsync<IPersonaempresaDTO>(async () =>
                    {
                        PersonaEmpresa personaempresaDO = MapPersonaempresa(personaempresa);
                        context.Entry(personaempresaDO).State = EntityState.Modified;
@@ -56,7 +56,7 @@ namespace Base.Datos.DAL
                    });
 
         public async Task<Respuesta<IPersonaempresaDTO>> EliminarPersonaempresa(IPersonaempresaDTO personaempresa)
-                => await EjecutarTransaccionAsync(async () =>
+                => await EjecutarTransaccionAsync<IPersonaempresaDTO>(async () =>
                    {
                        PersonaEmpresa personaempresaDO = MapPersonaempresa(personaempresa);
                        context.PersonaEmpresas.Remove(personaempresaDO);
@@ -65,7 +65,7 @@ namespace Base.Datos.DAL
                    });
 
         public async Task<Respuesta<IPersonaempresaDTO>> GuardarPersonaempresa(IPersonaempresaDTO personaempresa)
-                => await EjecutarTransaccionAsync(async () =>
+                => await EjecutarTransaccionAsync<IPersonaempresaDTO>(async () =>
                    {
                        PersonaEmpresa personaempresaDO = MapPersonaempresa(personaempresa);
                        personaempresaDO.Id = Guid.NewGuid();

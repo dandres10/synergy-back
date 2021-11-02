@@ -9,7 +9,7 @@
     {
         public delegate Task<dynamic> EjecutarCodigo();
 
-        public static async Task<dynamic> EjecutarTransaccionAsync(EjecutarCodigo ejecutarCodigo)
+        public static async Task<dynamic> EjecutarTransaccionAsync<T>(EjecutarCodigo ejecutarCodigo)
         {
             try
             {
@@ -17,12 +17,11 @@
             }
             catch (Exception error)
             {
-                //TOdO: arreglar este retorno toca tipar la clase para que se devuelva lo esperado 
-                return CrearRespuesta<dynamic>.Fallida(error.Message.ToString());
+                return CrearRespuesta<T>.Fallida(error.Message.ToString());
             }
         }
 
-        public static async Task<dynamic> EjecutarTransaccionAsync(EjecutarCodigo ejecutarCodigo, Context context, string nombreMetodo)
+        public static async Task<dynamic> EjecutarTransaccionAsync<T>(EjecutarCodigo ejecutarCodigo, Context context, string nombreMetodo)
         {
             try
             {
@@ -30,7 +29,7 @@
             }
             catch (Exception error)
             {
-                return CrearRespuesta<dynamic>.Fallida(error.Message.ToString());
+                return CrearRespuesta<T>.Fallida(error.Message.ToString());
             }
         }
     }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace Base.Datos.Contexto.Entidades
+namespace GenerarContext.Contexto.Entidades
 {
     public partial class Sede
     {
@@ -22,6 +22,9 @@ namespace Base.Datos.Contexto.Entidades
         public DateTime? FechaFinal { get; set; }
         public string CodigoPostal { get; set; }
         public Guid Pais { get; set; }
+        public string Telefono1 { get; set; }
+        public string Telefono2 { get; set; }
+        public string Direccion { get; set; }
 
         public virtual Empresa EmpresaNavigation { get; set; }
         public virtual Pai PaisNavigation { get; set; }
