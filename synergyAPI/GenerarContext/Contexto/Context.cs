@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace GenerarContext.Contexto.Entidades
+namespace GenerarContext.Contexto
 {
     public partial class Context : DbContext
     {
@@ -28,7 +28,14 @@ namespace GenerarContext.Contexto.Entidades
         public virtual DbSet<Sede> Sedes { get; set; }
         public virtual DbSet<Trazabilidad> Trazabilidads { get; set; }
 
-        
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-QEFA977\\SQLEXPRESS;Initial Catalog=synergy;Integrated Security=True");
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -44,13 +51,7 @@ namespace GenerarContext.Contexto.Entidades
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.CodigoPostal)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Direccion)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.Direccion).HasMaxLength(100);
 
                 entity.Property(e => e.FechaFinal).HasColumnType("datetime");
 
@@ -60,17 +61,13 @@ namespace GenerarContext.Contexto.Entidades
 
                 entity.Property(e => e.FechaReIntegro).HasColumnType("datetime");
 
-                entity.Property(e => e.Nit)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.Nit).HasMaxLength(1);
 
                 entity.Property(e => e.Nombre)
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.Telefono)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.Telefono).HasMaxLength(100);
 
                 entity.HasOne(d => d.PaisNavigation)
                     .WithMany(p => p.Empresas)

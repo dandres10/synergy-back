@@ -9,6 +9,7 @@ namespace API.Controllers
     using Base.Negocio.BL;
     using Base.Transversal.Clases;
     using Base.Transversal.Mensajes;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using System.Collections.Generic;
     using System.Linq;
@@ -35,6 +36,7 @@ namespace API.Controllers
         /// </summary>
         /// <author>Generador Codigo 1.0.0</author>
         [HttpGet]
+        //[Authorize]
         [Route(nameof(PaisController.ConsultarListaPais))]
         public async Task<Respuesta<List<PaisDTO>>> ConsultarListaPais()
            => MapRespuestaListPaisDTO(await paisBL.ConsultarListaPais());

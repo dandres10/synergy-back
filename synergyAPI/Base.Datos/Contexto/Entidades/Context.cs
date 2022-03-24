@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+
 
 #nullable disable
 
@@ -28,8 +28,6 @@ namespace Base.Datos.Contexto.Entidades
         public virtual DbSet<Sede> Sedes { get; set; }
         public virtual DbSet<Trazabilidad> Trazabilidads { get; set; }
 
-        
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "Modern_Spanish_CI_AS");
@@ -44,13 +42,7 @@ namespace Base.Datos.Contexto.Entidades
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.CodigoPostal)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Direccion)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.Direccion).HasMaxLength(100);
 
                 entity.Property(e => e.FechaFinal).HasColumnType("datetime");
 
@@ -60,17 +52,13 @@ namespace Base.Datos.Contexto.Entidades
 
                 entity.Property(e => e.FechaReIntegro).HasColumnType("datetime");
 
-                entity.Property(e => e.Nit)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.Nit).HasMaxLength(1);
 
                 entity.Property(e => e.Nombre)
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.Telefono)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.Telefono).HasMaxLength(100);
 
                 entity.HasOne(d => d.PaisNavigation)
                     .WithMany(p => p.Empresas)
@@ -262,6 +250,10 @@ namespace Base.Datos.Contexto.Entidades
                     .IsRequired()
                     .HasMaxLength(50);
 
+                entity.Property(e => e.Direccion)
+                    .IsRequired()
+                    .HasMaxLength(100);
+
                 entity.Property(e => e.FechaFinal).HasColumnType("datetime");
 
                 entity.Property(e => e.FechaInicial)
@@ -275,6 +267,12 @@ namespace Base.Datos.Contexto.Entidades
                 entity.Property(e => e.Sigla)
                     .IsRequired()
                     .HasMaxLength(2);
+
+                entity.Property(e => e.Telefono1)
+                    .IsRequired()
+                    .HasMaxLength(20);
+
+                entity.Property(e => e.Telefono2).HasMaxLength(20);
 
                 entity.HasOne(d => d.EmpresaNavigation)
                     .WithMany(p => p.Sedes)

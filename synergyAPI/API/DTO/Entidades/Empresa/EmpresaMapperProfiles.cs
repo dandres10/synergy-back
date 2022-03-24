@@ -6,9 +6,10 @@ namespace API.DTO.Entidades.Empresa
     using Base.Negocio.BO.Entidades;
     using Base.Transversal.Clases;
     using System.Collections.Generic;
-
+    
     public class EmpresaMapperProfiles : Profile
     {
+    
         public EmpresaMapperProfiles()
         {
             CreateMap<Empresa, IEmpresaDTO>().ReverseMap();

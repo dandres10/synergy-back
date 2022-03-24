@@ -12,6 +12,7 @@ namespace Base.Datos.DAL
     using Microsoft.EntityFrameworkCore;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     #endregion Importaciones
@@ -31,7 +32,7 @@ namespace Base.Datos.DAL
                 => await EjecutarTransaccionAsync<List<IEmpresaDTO>>(async () =>
                    {
                        List<Empresa> empresa = await context.Empresas.AsNoTracking().ToListAsync();
-                       if (IsNull(empresa))
+                       if (!empresa.Any())
                            return CrearRespuesta<IEmpresaDTO>.AdvertenciaLista(null, MensajesBaseEspanol.NoData);
                        return CrearRespuesta<IEmpresaDTO>.ExitosaLista(MapListIEmpresaDTO(empresa));
                    });
@@ -47,7 +48,7 @@ namespace Base.Datos.DAL
                    });
 
         public async Task<Respuesta<IEmpresaDTO>> EditarEmpresa(IEmpresaDTO empresa)
-                => await EjecutarTransaccionAsync<IEmpresaDTO>(async () => 
+                => await EjecutarTransaccionAsync<IEmpresaDTO>(async () =>
                    {
                        Empresa empresaDO = MapEmpresa(empresa);
                        context.Entry(empresaDO).State = EntityState.Modified;
@@ -71,7 +72,7 @@ namespace Base.Datos.DAL
                        empresaDO.Id = Guid.NewGuid();
                        context.Empresas.Add(empresaDO);
                        await context.SaveChangesAsync();
-                       return CrearRespuesta<IEmpresaDTO>.Exitosa(MapIEmpresaDTO(empresaDO), MensajesBaseEspanol.CreateData);
+                       return CrearRespuesta<IEmpresaDTO>.Exitosa(null, MensajesBaseEspanol.CreateData);
                    });
 
         #region Metodos Privados

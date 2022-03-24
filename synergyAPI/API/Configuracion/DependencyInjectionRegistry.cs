@@ -36,8 +36,6 @@
             services.AddScoped<PersonaempresaDAL>();
             services.AddScoped<PersonaempresaBL>();
 
-
-
             #region Configuraciones de servicos para la API
 
             //Configuracion del servicio de Swagger

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace GenerarContext.Contexto.Entidades
+namespace GenerarContext.Contexto
 {
     public partial class Persona
     {

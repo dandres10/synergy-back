@@ -7,6 +7,7 @@ namespace Base.Negocio.BL
     using Base.IC.DTO.Entidades;
     using Base.Negocio.Configuracion;
     using Base.Transversal.Clases;
+    using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
@@ -33,8 +34,8 @@ namespace Base.Negocio.BL
             => await EjecutarTransaccionAsync<IEmpresaDTO>(async () =>
             {
                 Respuesta<IEmpresaDTO> respuestaDAL = await empresaDAL.ConsultarEmpresa(empresa);
-                empresa.FechaInicial = respuestaDAL.Resultado.FechaInicial;
                 if (!respuestaDAL.EsValido) return respuestaDAL;
+                empresa.FechaInicial = respuestaDAL.Resultado.FechaInicial;
                 return await empresaDAL.EditarEmpresa(empresa);
             });
 

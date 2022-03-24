@@ -10,13 +10,7 @@ namespace API.DTO.Entidades.Empresa
     
         public string Nombre { get; set; }
     
-        public string Nit { get; set; }
-    
-        public string Telefono { get; set; }
-    
         public string Celular { get; set; }
-    
-        public string Direccion { get; set; }
     
         public DateTime FechaInicial { get; set; }
     
@@ -26,9 +20,15 @@ namespace API.DTO.Entidades.Empresa
     
         public bool Estado { get; set; }
     
-        public string CodigoPostal { get; set; }
-    
         public Guid Pais { get; set; }
+    
+        public string Nit { get; set; }
+    
+        public int? CodigoPostal { get; set; }
+    
+        public string Direccion { get; set; }
+    
+        public string Telefono { get; set; }
     
     }
 }

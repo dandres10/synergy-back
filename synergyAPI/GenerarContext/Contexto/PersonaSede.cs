@@ -3,15 +3,15 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace GenerarContext.Contexto.Entidades
+namespace GenerarContext.Contexto
 {
-    public partial class PersonaEmpresa
+    public partial class PersonaSede
     {
         public Guid Persona { get; set; }
-        public Guid Empresa { get; set; }
+        public Guid Sede { get; set; }
         public Guid Id { get; set; }
 
-        public virtual Empresa EmpresaNavigation { get; set; }
         public virtual Persona PersonaNavigation { get; set; }
+        public virtual Sede SedeNavigation { get; set; }
     }
 }
